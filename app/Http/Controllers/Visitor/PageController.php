@@ -1,0 +1,110 @@
+<?php
+
+namespace App\Http\Controllers\Visitor;
+
+use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\ProductFaq;
+use App\Models\Review;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class PageController extends Controller
+{
+    /**
+     * Display the Power Veda Storefront Home page with database products, reviews, usage guides and FAQs.
+     */
+    public function home(): View
+    {
+        $products = Product::with(['activeFaqs'])->latest()->get();
+        $latestProduct = $products->first();
+        $reviews = Review::with('product')->where('status', 'Approved')->latest()->get();
+        $faqs = ProductFaq::where('is_active', true)->with('product')->orderBy('sort_order', 'asc')->orderBy('id', 'asc')->get();
+
+        return view('visitor.pages.home', compact('products', 'latestProduct', 'reviews', 'faqs'));
+    }
+
+    /**
+     * Display the Dedicated Product Detail page using SEO-friendly Slug.
+     */
+    public function productDetail(string|Product $product): View|\Illuminate\Http\RedirectResponse
+    {
+        // If route-model bound as Product instance
+        if ($product instanceof Product) {
+            $productModel = $product;
+        } else {
+            // Find by slug or fallback to numeric ID
+            $productModel = Product::where('slug', $product)->first();
+            if (!$productModel && is_numeric($product)) {
+                $productModel = Product::find((int) $product);
+                if ($productModel && $productModel->slug) {
+                    return redirect()->route('product.detail', $productModel->slug, 301);
+                }
+            }
+            if (!$productModel) {
+                abort(404, 'Product formulation not found.');
+            }
+        }
+
+        $productModel->load([
+            'activeFaqs',
+            'reviews' => function ($q) {
+                $q->where('status', 'Approved')->latest();
+            }
+        ]);
+
+        $relatedProducts = Product::where('id', '!=', $productModel->id)
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
+
+        return view('visitor.pages.product-detail', ['product' => $productModel, 'relatedProducts' => $relatedProducts]);
+    }
+
+    /**
+     * Display the Privacy Policy page.
+     */
+    public function privacy(): View
+    {
+        return view('visitor.pages.privacy');
+    }
+
+    /**
+     * Display the Terms & Conditions page.
+     */
+    public function terms(): View
+    {
+        return view('visitor.pages.terms');
+    }
+
+    /**
+     * Display the Refund & Return Policy page.
+     */
+    public function refund(): View
+    {
+        return view('visitor.pages.refund');
+    }
+
+    /**
+     * Display the My Account & Orders Dashboard page (protected - logged-in users only).
+     */
+    public function account(): View|\Illuminate\Http\RedirectResponse
+    {
+        if (!auth()->check()) {
+            return redirect()->route('home')->with('openAuthModal', true)->with('error', 'Please log in to access your account and orders.');
+        }
+
+        $user = auth()->user();
+        $addresses = $user->addresses()
+            ->orderBy('is_default', 'desc')
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $orders = $user->orders()
+            ->with('items')
+            ->latest()
+            ->get();
+
+        return view('visitor.pages.account', compact('user', 'addresses', 'orders'));
+    }
+}
