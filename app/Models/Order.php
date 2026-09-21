@@ -38,6 +38,8 @@ class Order extends Model
         'total_amount',
         'payment_method',
         'payment_status',
+        'transaction_id',
+        'payment_details',
         'status',
         'notes',
     ];

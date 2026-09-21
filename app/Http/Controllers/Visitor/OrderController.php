@@ -7,6 +7,7 @@ use App\Models\Address;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Services\PhonePeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,9 +39,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Place a new order for the authenticated user.
+     * Place a new order with multiple items from modal or direct cart, optionally initiating PhonePe PG.
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request, PhonePeService $phonePeService): JsonResponse
     {
         if (!auth()->check()) {
             return response()->json([
@@ -51,7 +52,23 @@ class OrderController extends Controller
 
         $user = auth()->user();
 
-        // 1. Gather Cart Items (from database cart or request payload)
+        // 1. Validate Input
+        $request->validate([
+            'address_id' => 'nullable|integer',
+            'recipient_name' => 'nullable|string|max:100',
+            'contactNo' => 'nullable|string|max:20',
+            'address_line_1' => 'nullable|string|max:255',
+            'address_line_2' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:100',
+            'state' => 'nullable|string|max:100',
+            'pincode' => 'nullable|string|max:15',
+            'payment_method' => 'nullable|string|max:50',
+            'notes' => 'nullable|string|max:500',
+            'cart_items' => 'nullable|array',
+            'save_address' => 'nullable|boolean',
+        ]);
+
+        // 2. Resolve Items to Order (check DB cart first, then request payload)
         $dbCartItems = $user->cartItems()->get();
         $itemsToOrder = [];
 
@@ -59,7 +76,7 @@ class OrderController extends Controller
             foreach ($dbCartItems as $cItem) {
                 $itemsToOrder[] = [
                     'product_id' => $cItem->product_id,
-                    'product_name' => $cItem->product_name,
+                    'product_name' => $cItem->product_name ?? 'Ayurvedic Formulation',
                     'price' => (float) $cItem->price,
                     'qty' => (int) $cItem->qty,
                     'image' => $cItem->image,
@@ -67,12 +84,14 @@ class OrderController extends Controller
             }
         } elseif ($request->has('cart_items') && is_array($request->input('cart_items')) && count($request->input('cart_items')) > 0) {
             foreach ($request->input('cart_items') as $cItem) {
+                $prodId = $cItem['id'] ?? $cItem['product_id'] ?? null;
+                $prod = $prodId ? Product::find($prodId) : null;
                 $itemsToOrder[] = [
-                    'product_id' => $cItem['id'] ?? $cItem['product_id'] ?? null,
-                    'product_name' => $cItem['name'] ?? $cItem['product_name'] ?? 'Ayurvedic Formulation',
-                    'price' => (float) ($cItem['price'] ?? 0),
+                    'product_id' => $prodId,
+                    'product_name' => $cItem['name'] ?? $cItem['product_name'] ?? ($prod ? $prod->name : 'Ayurvedic Formulation'),
+                    'price' => (float) ($cItem['price'] ?? ($prod ? $prod->price : 0)),
                     'qty' => max(1, (int) ($cItem['qty'] ?? 1)),
-                    'image' => $cItem['image'] ?? null,
+                    'image' => $cItem['image'] ?? ($prod ? $prod->photo_url : null),
                 ];
             }
         }
@@ -80,11 +99,11 @@ class OrderController extends Controller
         if (empty($itemsToOrder)) {
             return response()->json([
                 'success' => false,
-                'message' => 'Your cart is empty. Please add products before placing an order.',
+                'message' => 'Your cart is empty. Please add formulations before placing an order.',
             ], 422);
         }
 
-        // 2. Validate Address
+        // 3. Resolve Address
         $recipientName = '';
         $contactNo = '';
         $address1 = '';
@@ -94,12 +113,15 @@ class OrderController extends Controller
         $pincode = '';
 
         if ($request->filled('address_id')) {
-            $address = $user->addresses()->find($request->input('address_id'));
+            $address = Address::where('id', $request->input('address_id'))
+                ->where('user_id', $user->id)
+                ->first();
+
             if (!$address) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Selected delivery address not found.',
-                ], 404);
+                    'message' => 'Selected delivery address could not be found.',
+                ], 422);
             }
 
             $recipientName = $address->recipient_name;
@@ -110,26 +132,24 @@ class OrderController extends Controller
             $state = $address->state;
             $pincode = $address->pincode;
         } else {
-            $validated = $request->validate([
-                'recipient_name' => 'required|string|max:255',
-                'contactNo' => 'required|string|max:20',
-                'address_line_1' => 'required|string|max:255',
-                'address_line_2' => 'nullable|string|max:255',
-                'city' => 'required|string|max:100',
-                'state' => 'required|string|max:100',
-                'pincode' => 'required|string|max:15',
-                'save_address' => 'nullable|boolean',
-            ]);
+            // Validate required inline fields
+            $recipientName = (string) $request->input('recipient_name', $user->name);
+            $contactNo = (string) $request->input('contactNo', $user->contactNo ?? '');
+            $address1 = (string) $request->input('address_line_1');
+            $address2 = $request->input('address_line_2');
+            $city = (string) $request->input('city');
+            $state = (string) $request->input('state');
+            $pincode = (string) $request->input('pincode');
 
-            $recipientName = $validated['recipient_name'];
-            $contactNo = $validated['contactNo'];
-            $address1 = $validated['address_line_1'];
-            $address2 = $validated['address_line_2'] ?? null;
-            $city = $validated['city'];
-            $state = $validated['state'];
-            $pincode = $validated['pincode'];
+            if (empty($recipientName) || empty($contactNo) || empty($address1) || empty($city) || empty($state) || empty($pincode)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Please provide complete delivery address details.',
+                ], 422);
+            }
 
-            if ($request->boolean('save_address')) {
+            // Save new address if requested
+            if ($request->boolean('save_address', true)) {
                 $user->addresses()->create([
                     'recipient_name' => $recipientName,
                     'contactNo' => $contactNo,
@@ -144,18 +164,26 @@ class OrderController extends Controller
             }
         }
 
-        // 3. Payment Method & Status
-        $paymentMethod = $request->input('payment_method', 'Cash on Delivery');
-        $pmLower = strtolower((string) $paymentMethod);
-        if (str_contains($pmLower, 'upi') || str_contains($pmLower, 'online') || str_contains($pmLower, 'card') || str_contains($pmLower, 'prepaid')) {
+        // 4. Payment Method & Status
+        $rawPaymentMethod = $request->input('payment_method', 'Cash on Delivery');
+        $pmLower = strtolower((string) $rawPaymentMethod);
+        $isPhonePe = str_contains($pmLower, 'phonepe');
+
+        if ($isPhonePe) {
+            $paymentMethod = 'PhonePe';
+            $paymentStatus = 'Pending';
+            $orderStatus = 'Pending';
+        } elseif (str_contains($pmLower, 'upi') || str_contains($pmLower, 'online') || str_contains($pmLower, 'card') || str_contains($pmLower, 'prepaid')) {
             $paymentMethod = 'Prepaid UPI / Online';
             $paymentStatus = 'Paid';
+            $orderStatus = 'Processing';
         } else {
             $paymentMethod = 'Cash on Delivery';
             $paymentStatus = 'Pending';
+            $orderStatus = 'Processing';
         }
 
-        // 4. Calculate Subtotal, Shipping, and Total
+        // 5. Calculate Subtotal, Shipping, and Total
         $subtotal = 0.0;
         foreach ($itemsToOrder as $item) {
             $subtotal += ($item['price'] * $item['qty']);
@@ -164,10 +192,10 @@ class OrderController extends Controller
         $shippingFee = ($subtotal >= 999 || $subtotal == 0) ? 0.00 : 99.00;
         $totalAmount = $subtotal + $shippingFee;
 
-        // 5. Generate Unique Order Number
+        // 6. Generate Unique Order Number
         $orderNumber = 'PV-' . date('Y') . '-' . strtoupper(Str::random(5));
 
-        // 6. DB Transaction to Create Order and OrderItems & Clear Cart
+        // 7. DB Transaction to Create Order and OrderItems & Clear Cart
         $order = DB::transaction(function () use (
             $user,
             $orderNumber,
@@ -183,6 +211,7 @@ class OrderController extends Controller
             $totalAmount,
             $paymentMethod,
             $paymentStatus,
+            $orderStatus,
             $itemsToOrder,
             $request
         ) {
@@ -201,7 +230,7 @@ class OrderController extends Controller
                 'total_amount' => $totalAmount,
                 'payment_method' => $paymentMethod,
                 'payment_status' => $paymentStatus,
-                'status' => 'Processing',
+                'status' => $orderStatus,
                 'notes' => $request->input('notes'),
             ]);
 
@@ -223,6 +252,28 @@ class OrderController extends Controller
         });
 
         $order->load('items');
+
+        // 8. If PhonePe payment, initiate PG session and return redirect URL
+        if ($isPhonePe) {
+            $callbackUrl = route('payment.phonepe.callback', ['order_number' => $order->order_number]);
+            $phonePeResult = $phonePeService->initiatePayment($order, $callbackUrl);
+
+            if ($phonePeResult['success'] && !empty($phonePeResult['redirect_url'])) {
+                return response()->json([
+                    'success' => true,
+                    'message' => "Order #{$order->order_number} initiated. Redirecting to PhonePe...",
+                    'redirect_url' => $phonePeResult['redirect_url'],
+                    'order' => $order,
+                ], 201);
+            }
+
+            // If Sandbox/API communication error, return informative fallback
+            return response()->json([
+                'success' => false,
+                'message' => $phonePeResult['message'] ?? 'Unable to connect to PhonePe Gateway. Please try again or select Cash on Delivery.',
+                'order' => $order,
+            ], 422);
+        }
 
         return response()->json([
             'success' => true,

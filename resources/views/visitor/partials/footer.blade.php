@@ -53,11 +53,12 @@
       <div class="col-6 col-md-6 col-lg-3">
         <h4 class="footer-col-title">Policies &amp; Trust</h4>
         <ul class="footer-links-list">
-          <li><a href="{{ route('terms') }}"><i class="bi bi-file-earmark-text text-warning"></i> Terms &amp; Conditions</a></li>
           <li><a href="{{ route('privacy') }}"><i class="bi bi-shield-lock text-warning"></i> Privacy Policy</a></li>
-          <li><a href="{{ route('refund') }}"><i class="bi bi-arrow-counterclockwise text-warning"></i> Refund &amp; Return Policy</a></li>
+          <li><a href="{{ route('terms') }}"><i class="bi bi-file-earmark-text text-warning"></i> Terms &amp; Conditions</a></li>
+          <li><a href="{{ route('refund') }}"><i class="bi bi-cash-stack text-warning"></i> Refund Policy</a></li>
+          <li><a href="{{ route('return') }}"><i class="bi bi-arrow-counterclockwise text-warning"></i> Return Policy</a></li>
+          <li><a href="{{ route('shipping') }}"><i class="bi bi-truck text-warning"></i> Shipping Policy</a></li>
           <li><a href="{{ route('about') }}"><i class="bi bi-info-circle text-warning"></i> About Brand &amp; Heritage</a></li>
-          <li><a href="{{ route('admin.dashboard') }}"><i class="bi bi-speedometer2 text-warning"></i> Admin Portal</a></li>
         </ul>
       </div>
 

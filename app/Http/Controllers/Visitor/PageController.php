@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Visitor;
 
 use App\Http\Controllers\Controller;
+use App\Models\CmsPage;
 use App\Models\Product;
 use App\Models\ProductFaq;
 use App\Models\Review;
@@ -70,27 +71,57 @@ class PageController extends Controller
     }
 
     /**
-     * Display the Privacy Policy page.
+     * Display the Privacy Policy page dynamically from CMS.
      */
     public function privacy(): View
     {
-        return view('visitor.pages.privacy');
+        $page = CmsPage::where('slug', 'privacy-policy')->firstOrFail();
+        return view('visitor.pages.policy', compact('page'));
     }
 
     /**
-     * Display the Terms & Conditions page.
+     * Display the Terms & Conditions page dynamically from CMS.
      */
     public function terms(): View
     {
-        return view('visitor.pages.terms');
+        $page = CmsPage::where('slug', 'terms-and-conditions')->firstOrFail();
+        return view('visitor.pages.policy', compact('page'));
     }
 
     /**
-     * Display the Refund & Return Policy page.
+     * Display the Refund Policy page dynamically from CMS.
      */
     public function refund(): View
     {
-        return view('visitor.pages.refund');
+        $page = CmsPage::where('slug', 'refund-policy')->firstOrFail();
+        return view('visitor.pages.policy', compact('page'));
+    }
+
+    /**
+     * Display the Return Policy page dynamically from CMS.
+     */
+    public function return(): View
+    {
+        $page = CmsPage::where('slug', 'return-policy')->firstOrFail();
+        return view('visitor.pages.policy', compact('page'));
+    }
+
+    /**
+     * Display the Shipping Policy page dynamically from CMS.
+     */
+    public function shipping(): View
+    {
+        $page = CmsPage::where('slug', 'shipping-policy')->firstOrFail();
+        return view('visitor.pages.policy', compact('page'));
+    }
+
+    /**
+     * Display any Policy page dynamically by slug.
+     */
+    public function showPolicy(string $slug): View
+    {
+        $page = CmsPage::where('slug', $slug)->firstOrFail();
+        return view('visitor.pages.policy', compact('page'));
     }
 
     /**

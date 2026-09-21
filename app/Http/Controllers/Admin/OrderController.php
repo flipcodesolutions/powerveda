@@ -18,16 +18,37 @@ class OrderController extends Controller
     {
         $query = Order::with(['user', 'items'])->latest();
 
+        // 1. Order Status Filter
         if ($request->filled('status') && $request->input('status') !== 'all') {
             $query->where('status', $request->input('status'));
         }
 
+        // 2. Payment Status Filter
+        if ($request->filled('payment_status') && $request->input('payment_status') !== 'all') {
+            $query->where('payment_status', $request->input('payment_status'));
+        }
+
+        // 3. Payment Method Filter
+        if ($request->filled('payment_method') && $request->input('payment_method') !== 'all') {
+            $query->where('payment_method', $request->input('payment_method'));
+        }
+
+        // 4. Date Range Filter
+        if ($request->filled('date_from')) {
+            $query->whereDate('created_at', '>=', $request->input('date_from'));
+        }
+        if ($request->filled('date_to')) {
+            $query->whereDate('created_at', '<=', $request->input('date_to'));
+        }
+
+        // 5. Search Filter
         if ($request->filled('search')) {
-            $search = $request->input('search');
+            $search = trim((string) $request->input('search'));
             $query->where(function ($q) use ($search) {
                 $q->where('order_number', 'like', "%{$search}%")
                     ->orWhere('recipient_name', 'like', "%{$search}%")
                     ->orWhere('contactNo', 'like', "%{$search}%")
+                    ->orWhere('transaction_id', 'like', "%{$search}%")
                     ->orWhereHas('user', function ($uq) use ($search) {
                         $uq->where('name', 'like', "%{$search}%")
                             ->orWhere('email', 'like', "%{$search}%");
@@ -37,14 +58,23 @@ class OrderController extends Controller
 
         $orders = $query->paginate(15)->withQueryString();
 
+        // Calculate summary metrics
+        $stats = [
+            'total_orders' => Order::count(),
+            'paid_orders' => Order::where('payment_status', 'Paid')->count(),
+            'pending_payment' => Order::where('payment_status', 'Pending')->count(),
+            'failed_payment' => Order::where('payment_status', 'Failed')->count(),
+        ];
+
         if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
                 'orders' => $orders,
+                'stats' => $stats,
             ]);
         }
 
-        return view('admin.pages.orders', compact('orders'));
+        return view('admin.pages.orders', compact('orders', 'stats'));
     }
 
     /**

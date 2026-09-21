@@ -58,6 +58,14 @@
         @endif
       </a>
     </li>
+    <li class="admin-nav-item">
+      <a href="{{ route('admin.cms.index') }}" class="admin-nav-link {{ request()->routeIs('admin.cms.*') ? 'active' : '' }}">
+        <div>
+          <i class="bi bi-file-earmark-richtext-fill nav-icon"></i>
+          <span>Policy CMS Pages</span>
+        </div>
+      </a>
+    </li>
   </ul>
 
   <div class="admin-sidebar-footer d-flex flex-column gap-2">

@@ -102,24 +102,28 @@
                 <div class="d-flex flex-column gap-2">
                   <label class="p-3 border rounded-3 d-flex align-items-center justify-content-between cursor-pointer payment-option-label" style="cursor: pointer;">
                     <div class="d-flex align-items-center gap-3">
-                      <input class="form-check-input mt-0" type="radio" name="checkout_payment" id="pay-cod" value="Cash on Delivery" checked>
+                      <input class="form-check-input mt-0" type="radio" name="checkout_payment" id="pay-phonepe" value="PhonePe" checked>
                       <div>
-                        <strong class="d-block text-dark small">Cash on Delivery (COD)</strong>
-                        <span class="text-muted" style="font-size: 0.75rem;">Pay in cash or scan QR upon physical parcel handover</span>
+                        <strong class="d-block text-dark small d-flex align-items-center gap-2">
+                          <i class="bi bi-wallet2 text-primary"></i> PhonePe PG (UPI, Cards, NetBanking)
+                        </strong>
+                        <span class="text-muted" style="font-size: 0.75rem;">Instant payment via GPay, PhonePe, Paytm, Cards &amp; NetBanking</span>
                       </div>
                     </div>
-                    <span class="badge bg-light text-dark border">Standard</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle">Recommended</span>
                   </label>
 
                   <label class="p-3 border rounded-3 d-flex align-items-center justify-content-between cursor-pointer payment-option-label" style="cursor: pointer;">
                     <div class="d-flex align-items-center gap-3">
-                      <input class="form-check-input mt-0" type="radio" name="checkout_payment" id="pay-upi" value="Prepaid UPI">
+                      <input class="form-check-input mt-0" type="radio" name="checkout_payment" id="pay-cod" value="Cash on Delivery">
                       <div>
-                        <strong class="d-block text-dark small">Instant UPI / NetBanking / Cards</strong>
-                        <span class="text-muted" style="font-size: 0.75rem;">Instant confirmed order processing &amp; priority dispatch</span>
+                        <strong class="d-block text-dark small d-flex align-items-center gap-2">
+                          <i class="bi bi-cash-stack text-warning"></i> Cash on Delivery (COD)
+                        </strong>
+                        <span class="text-muted" style="font-size: 0.75rem;">Pay in cash or scan QR upon physical parcel handover</span>
                       </div>
                     </div>
-                    <span class="badge bg-success-subtle text-success border border-success-subtle">Recommended</span>
+                    <span class="badge bg-light text-dark border">Standard</span>
                   </label>
                 </div>
               </div>

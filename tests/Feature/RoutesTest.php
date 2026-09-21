@@ -10,6 +10,12 @@ class RoutesTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(\Database\Seeders\CmsPageSeeder::class);
+    }
+
     /**
      * Test all Visitor routes return 200 OK.
      */
@@ -25,6 +31,12 @@ class RoutesTest extends TestCase
         $response->assertStatus(200);
 
         $response = $this->get('/refund-policy');
+        $response->assertStatus(200);
+
+        $response = $this->get('/return-policy');
+        $response->assertStatus(200);
+
+        $response = $this->get('/shipping-policy');
         $response->assertStatus(200);
     }
 

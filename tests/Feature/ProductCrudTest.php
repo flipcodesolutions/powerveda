@@ -76,7 +76,7 @@ class ProductCrudTest extends TestCase
 
         // Standard Laravel form post redirects to index with success
         $response->assertRedirect(route('admin.products.index'));
-        $response->assertSessionHas('success', 'Product created successfully!');
+        $response->assertSessionHas('success', 'Product created successfully with usage steps & FAQs!');
 
         $product = Product::where('name', 'Power Veda Shilajit Gold Resin')->first();
         $this->assertNotNull($product);
@@ -139,7 +139,7 @@ class ProductCrudTest extends TestCase
             'meta_detail' => 'Focus and memory support',
         ]);
 
-        $response = $this->get("/admin/products/{$product->id}/edit");
+        $response = $this->get(route('admin.products.edit', $product));
         $response->assertStatus(200);
         $response->assertSee('Edit Product: Brahmi Brain Booster');
         $response->assertSee('899');
@@ -166,7 +166,7 @@ class ProductCrudTest extends TestCase
         $newPhoto = UploadedFile::fake()->image('new_photo.jpg');
         $newOgImage = UploadedFile::fake()->image('new_og.jpg');
 
-        $response = $this->put("/admin/products/{$product->id}", [
+        $response = $this->put(route('admin.products.update', $product), [
             'name' => 'Updated Product Name',
             'price' => 799.00,
             'stock' => 25,
@@ -178,7 +178,7 @@ class ProductCrudTest extends TestCase
         ]);
 
         $response->assertRedirect(route('admin.products.index'));
-        $response->assertSessionHas('success', 'Product updated successfully!');
+        $response->assertSessionHas('success', 'Product updated successfully with usage steps & FAQs!');
 
         $product->refresh();
         $this->assertEquals('Updated Product Name', $product->name);
@@ -210,7 +210,7 @@ class ProductCrudTest extends TestCase
             'og_image' => $ogPath,
         ]);
 
-        $response = $this->delete("/admin/products/{$product->id}");
+        $response = $this->delete(route('admin.products.destroy', $product));
         $response->assertRedirect(route('admin.products.index'));
         $response->assertSessionHas('success', 'Product deleted successfully!');
 

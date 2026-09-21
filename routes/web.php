@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Visitor\CartController;
 use App\Http\Controllers\Visitor\ContactController as VisitorContactController;
 use App\Http\Controllers\Visitor\OrderController as VisitorOrderController;
 use App\Http\Controllers\Visitor\PageController;
+use App\Http\Controllers\Visitor\PhonePeController;
 use App\Http\Controllers\Visitor\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,9 @@ Route::get('/account', [PageController::class, 'account'])->name('account');
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
 Route::get('/refund-policy', [PageController::class, 'refund'])->name('refund');
+Route::get('/return-policy', [PageController::class, 'return'])->name('return');
+Route::get('/shipping-policy', [PageController::class, 'shipping'])->name('shipping');
+Route::get('/policies/{slug}', [PageController::class, 'showPolicy'])->name('policies.show');
 
 // Visitor Contact Form Submission
 Route::post('/contact', [VisitorContactController::class, 'submit'])->name('contact.submit');
@@ -58,6 +63,10 @@ Route::post('/cart/sync', [CartController::class, 'sync'])->name('cart.sync');
 Route::post('/checkout/place-order', [VisitorOrderController::class, 'store'])->name('checkout.place_order');
 Route::get('/user/orders', [VisitorOrderController::class, 'index'])->name('user.orders.list');
 
+// PhonePe Payment Gateway Routes (Callback & Webhook)
+Route::match(['get', 'post'], '/payment/phonepe/callback', [PhonePeController::class, 'handleCallback'])->name('payment.phonepe.callback');
+Route::post('/payment/phonepe/webhook', [PhonePeController::class, 'handleWebhook'])->name('payment.phonepe.webhook');
+
 // Friendly Redirects
 Route::get('/orders', function () {
     return redirect()->route('account', ['tab' => 'orders']);
@@ -66,6 +75,8 @@ Route::redirect('/about', '/about-us');
 Route::redirect('/privacy', '/privacy-policy');
 Route::redirect('/terms', '/terms-and-conditions');
 Route::redirect('/refund', '/refund-policy');
+Route::redirect('/return', '/return-policy');
+Route::redirect('/shipping', '/shipping-policy');
 
 // Admin Authentication Routes
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -97,4 +108,8 @@ Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function ()
     Route::get('/contacts/{contact}', [AdminContactController::class, 'show'])->name('contacts.show');
     Route::patch('/contacts/{contact}/status', [AdminContactController::class, 'updateStatus'])->name('contacts.status');
     Route::delete('/contacts/{contact}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
+
+    // Policy CMS Management (Single createOrUpdate)
+    Route::get('/cms', [CmsPageController::class, 'index'])->name('cms.index');
+    Route::post('/cms', [CmsPageController::class, 'createOrUpdate'])->name('cms.createOrUpdate');
 });

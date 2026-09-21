@@ -236,6 +236,129 @@ class OrderTest extends TestCase
         ]);
     }
 
+    public function test_admin_can_view_order_details_json(): void
+    {
+        $admin = User::factory()->create(['role' => 'Admin']);
+        $customer = User::factory()->create(['role' => 'User']);
+
+        $order = Order::create([
+            'order_number' => 'PV-2026-SHOW1',
+            'user_id' => $customer->id,
+            'recipient_name' => 'Kavita Iyer',
+            'contactNo' => '9777766666',
+            'address_line_1' => '789 Marine Drive',
+            'city' => 'Mumbai',
+            'state' => 'Maharashtra',
+            'pincode' => '400020',
+            'subtotal' => 1999.00,
+            'shipping_fee' => 0.00,
+            'total_amount' => 1999.00,
+            'status' => 'Processing',
+        ]);
+
+        $item = OrderItem::create([
+            'order_id' => $order->id,
+            'product_name' => 'Himalayan Detox Elixir',
+            'price' => 1999.00,
+            'qty' => 1,
+        ]);
+
+        $response = $this->actingAs($admin)->getJson(route('admin.orders.show', $order));
+        $response->assertStatus(200)
+            ->assertJson([
+                'success' => true,
+                'order' => [
+                    'order_number' => 'PV-2026-SHOW1',
+                    'recipient_name' => 'Kavita Iyer',
+                ],
+            ]);
+    }
+
+    public function test_admin_can_delete_order(): void
+    {
+        $admin = User::factory()->create(['role' => 'Admin']);
+        $customer = User::factory()->create(['role' => 'User']);
+
+        $order = Order::create([
+            'order_number' => 'PV-2026-DEL1',
+            'user_id' => $customer->id,
+            'recipient_name' => 'To Delete',
+            'contactNo' => '9888899999',
+            'address_line_1' => 'Test Street',
+            'city' => 'Delhi',
+            'state' => 'Delhi',
+            'pincode' => '110001',
+            'subtotal' => 500.00,
+            'shipping_fee' => 0.00,
+            'total_amount' => 500.00,
+            'status' => 'Cancelled',
+        ]);
+
+        $response = $this->actingAs($admin)->delete(route('admin.orders.destroy', $order));
+        $response->assertRedirect(route('admin.orders'));
+
+        $this->assertDatabaseMissing('orders', [
+            'id' => $order->id,
+        ]);
+    }
+
+    public function test_admin_can_filter_orders_by_date_range_and_payment_status(): void
+    {
+        $admin = User::factory()->create(['role' => 'Admin']);
+        $customer = User::factory()->create(['role' => 'User']);
+
+        $paidOrder = Order::create([
+            'order_number' => 'PV-2026-PAID1',
+            'user_id' => $customer->id,
+            'recipient_name' => 'Aarav Paid',
+            'contactNo' => '9888811111',
+            'address_line_1' => 'Street 1',
+            'city' => 'Delhi',
+            'state' => 'Delhi',
+            'pincode' => '110001',
+            'subtotal' => 1499.00,
+            'total_amount' => 1499.00,
+            'payment_status' => 'Paid',
+            'payment_method' => 'PhonePe',
+            'status' => 'Processing',
+        ]);
+        $paidOrder->created_at = now()->subDays(5);
+        $paidOrder->saveQuietly();
+
+        $pendingOrder = Order::create([
+            'order_number' => 'PV-2026-PEND1',
+            'user_id' => $customer->id,
+            'recipient_name' => 'Meera Pending',
+            'contactNo' => '9888822222',
+            'address_line_1' => 'Street 2',
+            'city' => 'Mumbai',
+            'state' => 'Maharashtra',
+            'pincode' => '400001',
+            'subtotal' => 899.00,
+            'total_amount' => 899.00,
+            'payment_status' => 'Pending',
+            'payment_method' => 'Cash on Delivery',
+            'status' => 'Processing',
+        ]);
+        $pendingOrder->created_at = now()->subDays(20);
+        $pendingOrder->saveQuietly();
+
+        // 1. Filter by Payment Status = Paid
+        $paidResponse = $this->actingAs($admin)->get(route('admin.orders', ['payment_status' => 'Paid']));
+        $paidResponse->assertStatus(200)
+            ->assertSee('PV-2026-PAID1')
+            ->assertDontSee('PV-2026-PEND1');
+
+        // 2. Filter by Date Range (Last 7 days)
+        $dateResponse = $this->actingAs($admin)->get(route('admin.orders', [
+            'date_from' => now()->subDays(7)->format('Y-m-d'),
+            'date_to' => now()->format('Y-m-d'),
+        ]));
+        $dateResponse->assertStatus(200)
+            ->assertSee('PV-2026-PAID1')
+            ->assertDontSee('PV-2026-PEND1');
+    }
+
     public function test_non_admin_cannot_access_admin_orders(): void
     {
         $customer = User::factory()->create(['role' => 'User']);

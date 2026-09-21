@@ -1888,6 +1888,15 @@ async function handlePlaceOrderSubmit(event) {
         if (modal) modal.hide();
       }
 
+      // If PhonePe redirect URL returned, redirect immediately to gateway
+      if (data.redirect_url) {
+        showToast(data.message || 'Redirecting to PhonePe...', 'info');
+        setTimeout(() => {
+          window.location.href = data.redirect_url;
+        }, 400);
+        return;
+      }
+
       showToast(data.message || 'Order placed successfully!', 'success');
 
       if (window.location.pathname.includes('/account')) {
