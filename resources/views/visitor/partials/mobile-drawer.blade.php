@@ -5,7 +5,9 @@
   <!-- Drawer Header -->
   <div class="mobile-nav-header">
     <div class="d-flex align-items-center">
-      <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo" height="42">
+      <a href="{{ route('home') }}" class="d-inline-block">
+        <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo" height="42">
+      </a>
     </div>
     <button type="button" class="mobile-nav-close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
       <i class="bi bi-x-lg"></i>
@@ -16,7 +18,7 @@
   <div class="offcanvas-body d-flex flex-column p-0">
 
     <!-- Streamlined Quick Action Strip (Cart) -->
-    <a href="{{ route('cart.index') }}" class="mobile-cart-strip" data-bs-dismiss="offcanvas">
+    <a href="{{ route('cart.index') }}" class="mobile-cart-strip">
       <div class="cart-left">
         <div class="cart-icon-wrap">
           <i class="bi bi-bag"></i>
@@ -29,7 +31,7 @@
       <i class="bi bi-chevron-right arrow-icon" style="color: var(--gold-color);"></i>
     </a>
 
-    <!-- Main Navigation Menu Links -->
+    <!-- Main Navigation Menu Links (Matching Desktop Menu) -->
     <ul class="mobile-nav-list">
       <li class="mobile-nav-item">
         <a class="mobile-nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}#home" data-bs-dismiss="offcanvas">
@@ -43,7 +45,7 @@
         <li class="mobile-nav-item">
           <a class="mobile-nav-link" href="{{ route('home') }}#shop" data-bs-dismiss="offcanvas">
             <span class="nav-left">
-              <i class="bi bi-bag nav-icon"></i> Shop Formulations
+              <i class="bi bi-bag nav-icon"></i> Shop
             </span>
             <i class="bi bi-chevron-right arrow-icon"></i>
           </a>
@@ -58,9 +60,9 @@
         </a>
       </li>
       <li class="mobile-nav-item">
-        <a class="mobile-nav-link" href="{{ route('home') }}#about" data-bs-dismiss="offcanvas">
+        <a class="mobile-nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}" data-bs-dismiss="offcanvas">
           <span class="nav-left">
-            <i class="bi bi-flower1 nav-icon"></i> Our Philosophy
+            <i class="bi bi-flower1 nav-icon"></i> About Us
           </span>
           <i class="bi bi-chevron-right arrow-icon"></i>
         </a>
@@ -68,7 +70,15 @@
       <li class="mobile-nav-item">
         <a class="mobile-nav-link" href="{{ route('home') }}#reviews" data-bs-dismiss="offcanvas">
           <span class="nav-left">
-            <i class="bi bi-star nav-icon"></i> Customer Reviews
+            <i class="bi bi-star nav-icon"></i> Reviews
+          </span>
+          <i class="bi bi-chevron-right arrow-icon"></i>
+        </a>
+      </li>
+      <li class="mobile-nav-item {{ auth()->check() ? '' : 'd-none' }}" id="mobile-orders-item">
+        <a class="mobile-nav-link {{ request()->routeIs('account') ? 'active' : '' }}" href="{{ route('account') }}?tab=orders" data-bs-dismiss="offcanvas">
+          <span class="nav-left">
+            <i class="bi bi-box-seam nav-icon"></i> My Orders
           </span>
           <i class="bi bi-chevron-right arrow-icon"></i>
         </a>
@@ -76,7 +86,7 @@
       <li class="mobile-nav-item">
         <a class="mobile-nav-link" href="{{ route('home') }}#contact" data-bs-dismiss="offcanvas">
           <span class="nav-left">
-            <i class="bi bi-telephone nav-icon"></i> Contact &amp; Support
+            <i class="bi bi-telephone nav-icon"></i> Contact
           </span>
           <i class="bi bi-chevron-right arrow-icon"></i>
         </a>
@@ -92,13 +102,12 @@
 
       <!-- Guest: Login / Register Button (Shown when logged out) -->
       <div class="{{ auth()->check() ? 'd-none' : '' }}" id="mobile-guest-auth-block">
-        <a class="mobile-nav-link mobile-login-btn" href="javascript:void(0)" data-bs-dismiss="offcanvas"
-          data-bs-toggle="modal" data-bs-target="#authModal" id="mobile-auth-link">
+        <button type="button" class="mobile-nav-link mobile-login-btn w-100 text-start border-0 bg-transparent" id="mobile-auth-link">
           <span class="nav-left">
             <i class="bi bi-box-arrow-in-right nav-icon"></i> Login / Register
           </span>
           <i class="bi bi-chevron-right arrow-icon"></i>
-        </a>
+        </button>
       </div>
 
       <!-- Logged-in User Block (Shown when logged in) -->
@@ -126,7 +135,7 @@
               <i class="bi bi-chevron-right arrow-icon"></i>
             </a>
           </li>
-          <li class="mobile-nav-item" id="mobile-orders-item">
+          <li class="mobile-nav-item">
             <a class="mobile-nav-link" href="{{ route('account') }}?tab=orders">
               <span class="nav-left">
                 <i class="bi bi-box-seam nav-icon"></i> My Orders &amp; Tracking
@@ -154,11 +163,11 @@
             </li>
           @endif
           <li class="mobile-nav-item" id="mobile-logout-item">
-            <a class="mobile-nav-link text-danger" href="javascript:void(0)" onclick="handleLogout()">
+            <button type="button" class="mobile-nav-link text-danger w-100 text-start border-0 bg-transparent" onclick="handleLogout()">
               <span class="nav-left">
                 <i class="bi bi-box-arrow-right nav-icon text-danger"></i> Sign Out (Logout)
               </span>
-            </a>
+            </button>
           </li>
         </ul>
       </div>

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 // Visitor Frontend Routes
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/product/{product}', [PageController::class, 'productDetail'])->name('product.detail');
 Route::get('/account', [PageController::class, 'account'])->name('account');
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
@@ -61,6 +62,7 @@ Route::get('/user/orders', [VisitorOrderController::class, 'index'])->name('user
 Route::get('/orders', function () {
     return redirect()->route('account', ['tab' => 'orders']);
 })->name('user.orders');
+Route::redirect('/about', '/about-us');
 Route::redirect('/privacy', '/privacy-policy');
 Route::redirect('/terms', '/terms-and-conditions');
 Route::redirect('/refund', '/refund-policy');

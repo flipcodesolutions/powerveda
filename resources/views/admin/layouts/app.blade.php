@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Power Veda Admin Console. Manage botanical formulations, customer orders, and verified customer reviews.">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('page_title', 'Admin Dashboard') | Power Veda HQ</title>
 

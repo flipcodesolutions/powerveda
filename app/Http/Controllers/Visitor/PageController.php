@@ -62,6 +62,14 @@ class PageController extends Controller
     }
 
     /**
+     * Display the About Us & Healthcare Association page.
+     */
+    public function about(): View
+    {
+        return view('visitor.pages.about');
+    }
+
+    /**
      * Display the Privacy Policy page.
      */
     public function privacy(): View

@@ -36,13 +36,13 @@
             <a class="nav-link" href="{{ route('home') }}#why-us">Why Power Veda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}#about">About Us</a>
+            <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}#reviews">Reviews</a>
           </li>
           <li class="nav-item {{ auth()->check() ? '' : 'd-none' }}" id="nav-my-orders-item">
-            <a class="nav-link {{ request()->routeIs('account') ? 'active' : '' }}" href="{{ route('account') }}">
+            <a class="nav-link {{ request()->routeIs('account') ? 'active' : '' }}" href="{{ route('account') }}?tab=orders">
               My Orders
             </a>
           </li>

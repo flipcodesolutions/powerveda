@@ -19,8 +19,7 @@
           </div>
         </div>
         <p class="footer-brand-text">
-          Power Veda is dedicated to bringing pure, holistic wellness into modern life with 100% natural, lab-tested
-          botanicals engineered for strength, vitality, and balance.
+          Power Veda is a specialized men’s wellness brand associated with <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong> (serving since 2006), delivering authentic Ayurvedic formulations engineered for vitality, stamina, and balance.
         </p>
         <div class="footer-social-group">
           <a href="https://facebook.com" class="social-icon-btn" target="_blank" rel="noopener noreferrer"
@@ -43,7 +42,7 @@
             <li><a href="{{ route('home') }}#shop"><i class="bi bi-chevron-right small"></i> Shop</a></li>
           @endif
           <li><a href="{{ route('home') }}#why-us"><i class="bi bi-chevron-right small"></i> Why Power Veda</a></li>
-          <li><a href="{{ route('home') }}#about"><i class="bi bi-chevron-right small"></i> About Us</a></li>
+          <li><a href="{{ route('about') }}"><i class="bi bi-chevron-right small"></i> About Us</a></li>
           <li><a href="{{ route('home') }}#reviews"><i class="bi bi-chevron-right small"></i> Reviews</a></li>
           <li><a href="{{ route('home') }}#faqs"><i class="bi bi-chevron-right small"></i> FAQs</a></li>
           <li><a href="{{ route('home') }}#contact"><i class="bi bi-chevron-right small"></i> Contact</a></li>
@@ -57,8 +56,8 @@
           <li><a href="{{ route('terms') }}"><i class="bi bi-file-earmark-text text-warning"></i> Terms &amp; Conditions</a></li>
           <li><a href="{{ route('privacy') }}"><i class="bi bi-shield-lock text-warning"></i> Privacy Policy</a></li>
           <li><a href="{{ route('refund') }}"><i class="bi bi-arrow-counterclockwise text-warning"></i> Refund &amp; Return Policy</a></li>
+          <li><a href="{{ route('about') }}"><i class="bi bi-info-circle text-warning"></i> About Brand &amp; Heritage</a></li>
           <li><a href="{{ route('admin.dashboard') }}"><i class="bi bi-speedometer2 text-warning"></i> Admin Portal</a></li>
-          <li><a href="{{ route('home') }}#shop"><i class="bi bi-check2-circle text-warning"></i> 30-Day Wellness Guarantee</a></li>
         </ul>
       </div>
 
@@ -88,7 +87,7 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom-bar d-flex flex-wrap justify-content-between align-items-center gap-3">
       <div>
-        &copy; {{ date('Y') }} Power Veda Wellness Pvt Ltd. All rights reserved. &bull; 
+        &copy; {{ date('Y') }} Power Veda &bull; Associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center (Est. 2006). All rights reserved. &bull; 
         <a href="{{ route('admin.dashboard') }}" class="text-decoration-none text-warning fw-bold mx-1"><i class="bi bi-shield-lock"></i> Admin Portal</a>
       </div>
       <div class="d-flex gap-3 fs-5" style="color: var(--silver-color);">

@@ -14,67 +14,67 @@
 
 @section('content')
 <!-- 1. Breadcrumb Bar -->
-<div class="product-breadcrumb-bar py-3 border-bottom" style="background-color: var(--body-bg);">
+<div class="product-breadcrumb-bar py-2 py-md-3 border-bottom" style="background-color: var(--body-bg);">
   <div class="container-custom">
     <nav aria-label="breadcrumb">
-      <ol class="breadcrumb mb-0 small">
+      <ol class="breadcrumb mb-0 small flex-nowrap overflow-hidden text-truncate">
         <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-decoration-none" style="color: var(--primary-color);"><i class="bi bi-house-door me-1"></i>Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('home') }}#shop" class="text-decoration-none" style="color: var(--primary-color);">Formulations</a></li>
-        <li class="breadcrumb-item active text-truncate fw-bold" aria-current="page" style="color: var(--gold-color); max-width: 250px;">{{ $product->name }}</li>
+        <li class="breadcrumb-item active text-truncate fw-bold" aria-current="page" style="color: var(--gold-color); max-width: 200px;">{{ $product->name }}</li>
       </ol>
     </nav>
   </div>
 </div>
 
 <!-- 2. Product Hero Showcase (2-Column Showcase) -->
-<section class="product-showcase-section py-5 bg-white">
+<section class="product-showcase-section py-4 py-lg-5 bg-white">
   <div class="container-custom">
-    <div class="row g-5 align-items-start">
+    <div class="row g-4 g-lg-5 align-items-start">
 
       <!-- Left Column: Image Gallery & Trust Highlights -->
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 mb-4 mb-lg-0">
         <div class="product-gallery-sticky position-relative">
           
           <!-- Main Product Display Card -->
-          <div class="product-main-img-card rounded-4 p-3 p-md-4 border position-relative overflow-hidden" style="background: #FAFAFA; border-color: rgba(216, 188, 141, 0.35) !important;">
-            <span class="badge-natural position-absolute top-0 start-0 m-4 z-1" style="font-size: 0.78rem;">
+          <div class="product-main-img-card rounded-4 p-2 p-sm-3 p-md-4 border position-relative overflow-hidden" style="background: #FAFAFA; border-color: rgba(216, 188, 141, 0.35) !important;">
+            <span class="badge-natural position-absolute top-0 start-0 m-2 m-sm-3 m-md-4 z-1" style="font-size: 0.7rem;">
               [ {{ $product->badge ?: 'NATURAL' }} ]
             </span>
             @if($product->discount)
-              <span class="price-badge-gold position-absolute top-0 end-0 m-4 z-1 shadow-sm">
+              <span class="price-badge-gold position-absolute top-0 end-0 m-2 m-sm-3 m-md-4 z-1 shadow-sm" style="font-size: 0.72rem;">
                 {{ $product->discount }}
               </span>
             @endif
 
-            <div class="product-img-zoom-wrap text-center py-3">
-              <img src="{{ $product->photo_url }}" alt="{{ $product->name }}" class="img-fluid rounded-3 shadow-sm product-detail-main-img" id="mainProductImage" style="max-height: 440px; width: 100%; object-fit: contain;">
+            <div class="product-img-zoom-wrap text-center py-2 py-md-3">
+              <img src="{{ $product->photo_url }}" alt="{{ $product->name }}" class="img-fluid rounded-3 shadow-sm product-detail-main-img" id="mainProductImage">
             </div>
           </div>
 
           <!-- Trust Badges Under Image -->
-          <div class="row g-2 mt-3 text-center">
+          <div class="row g-2 mt-2 mt-md-3 text-center">
             <div class="col-6 col-sm-3">
-              <div class="p-2 rounded bg-light border text-center h-100">
-                <i class="bi bi-shield-fill-check text-warning d-block fs-5 mb-1"></i>
-                <span class="d-block small fw-bold" style="font-size: 0.72rem; color: var(--heading-color);">100% Pure</span>
+              <div class="p-2 rounded bg-light border text-center h-100 product-trust-pill">
+                <i class="bi bi-shield-fill-check text-warning d-block fs-6 mb-1"></i>
+                <span class="d-block fw-bold text-truncate" style="font-size: 0.68rem; color: var(--heading-color);">100% Pure</span>
               </div>
             </div>
             <div class="col-6 col-sm-3">
-              <div class="p-2 rounded bg-light border text-center h-100">
-                <i class="bi bi-patch-check-fill text-success d-block fs-5 mb-1"></i>
-                <span class="d-block small fw-bold" style="font-size: 0.72rem; color: var(--heading-color);">Lab Verified</span>
+              <div class="p-2 rounded bg-light border text-center h-100 product-trust-pill">
+                <i class="bi bi-patch-check-fill text-success d-block fs-6 mb-1"></i>
+                <span class="d-block fw-bold text-truncate" style="font-size: 0.68rem; color: var(--heading-color);">Lab Verified</span>
               </div>
             </div>
             <div class="col-6 col-sm-3">
-              <div class="p-2 rounded bg-light border text-center h-100">
-                <i class="bi bi-truck text-primary d-block fs-5 mb-1"></i>
-                <span class="d-block small fw-bold" style="font-size: 0.72rem; color: var(--heading-color);">Fast Delivery</span>
+              <div class="p-2 rounded bg-light border text-center h-100 product-trust-pill">
+                <i class="bi bi-truck text-primary d-block fs-6 mb-1"></i>
+                <span class="d-block fw-bold text-truncate" style="font-size: 0.68rem; color: var(--heading-color);">Fast Delivery</span>
               </div>
             </div>
             <div class="col-6 col-sm-3">
-              <div class="p-2 rounded bg-light border text-center h-100">
-                <i class="bi bi-arrow-counterclockwise text-warning d-block fs-5 mb-1"></i>
-                <span class="d-block small fw-bold" style="font-size: 0.72rem; color: var(--heading-color);">30-Day Guarantee</span>
+              <div class="p-2 rounded bg-light border text-center h-100 product-trust-pill">
+                <i class="bi bi-arrow-counterclockwise text-warning d-block fs-6 mb-1"></i>
+                <span class="d-block fw-bold text-truncate" style="font-size: 0.68rem; color: var(--heading-color);">30-Day Return</span>
               </div>
             </div>
           </div>
@@ -84,11 +84,11 @@
 
       <!-- Right Column: Product Info, Pricing & Buy Box -->
       <div class="col-12 col-lg-6">
-        <div class="product-info-panel">
+        <div class="product-info-panel pt-2 pt-lg-0">
           
           <!-- Rating & Stock Status -->
-          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
-            <div class="d-flex align-items-center gap-2">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3 product-rating-stock-bar">
+            <div class="d-flex align-items-center flex-wrap gap-2">
               <div class="stars text-warning small">
                 @for($i = 1; $i <= 5; $i++)
                   @if($product->rating >= $i)
@@ -101,7 +101,7 @@
                 @endfor
               </div>
               <a href="#productTabs" onclick="switchProductTab('reviews')" class="small text-muted text-decoration-none fw-semibold">
-                {{ number_format($product->rating, 1) }} ({{ $product->reviews_count }} verified reviews)
+                {{ number_format($product->rating, 1) }} ({{ $product->reviews_count }} reviews)
               </a>
             </div>
 
@@ -112,75 +112,79 @@
               </span>
             @elseif($product->stock <= 20)
               <span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1 rounded-pill small">
-                <i class="bi bi-exclamation-circle me-1"></i> Only {{ $product->stock }} Left in Stock
+                <i class="bi bi-exclamation-circle me-1"></i> Only {{ $product->stock }} Left
               </span>
             @else
               <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 rounded-pill small">
-                <i class="bi bi-check-circle me-1"></i> In Stock &bull; Ready to Dispatch
+                <i class="bi bi-check-circle me-1"></i> In Stock
               </span>
             @endif
           </div>
 
           <!-- Product Title -->
-          <h1 class="h2 fw-bold mb-3" style="color: var(--heading-color); font-family: var(--font-family); letter-spacing: -0.5px;">
+          <h1 class="h2 fw-bold mb-2 mb-md-3 product-page-title" style="color: var(--heading-color); font-family: var(--font-family); letter-spacing: -0.5px;">
             {{ $product->name }}
           </h1>
 
           <!-- Price Wrap -->
-          <div class="d-flex align-items-baseline gap-3 mb-4 pb-3 border-bottom">
-            <span class="fs-2 fw-bold" style="color: var(--heading-color);">₹{{ number_format($product->price, 0) }}</span>
-            @if($product->original_price)
-              <span class="fs-5 text-muted text-decoration-line-through">₹{{ number_format($product->original_price, 0) }}</span>
-            @endif
-            @if($product->discount)
-              <span class="price-badge-gold fs-6">{{ $product->discount }}</span>
-            @endif
-            <span class="small text-muted ms-auto">Inclusive of all taxes</span>
+          <div class="product-price-section mb-3 mb-md-4 pb-3 border-bottom">
+            <div class="d-flex align-items-baseline flex-wrap gap-2 gap-sm-3 mb-1">
+              <span class="fs-2 fw-bold text-dark lh-1" style="color: var(--heading-color) !important;">₹{{ number_format($product->price, 0) }}</span>
+              @if($product->original_price)
+                <span class="fs-5 text-muted text-decoration-line-through">₹{{ number_format($product->original_price, 0) }}</span>
+              @endif
+              @if($product->discount)
+                <span class="price-badge-gold fs-6">{{ $product->discount }}</span>
+              @endif
+            </div>
+            <span class="d-block small text-muted mt-1">Inclusive of all taxes</span>
           </div>
 
           <!-- Short Description -->
-          <p class="text-muted mb-4" style="line-height: 1.7; font-size: 0.98rem;">
+          <p class="text-muted mb-3 mb-md-4" style="line-height: 1.7; font-size: 0.95rem;">
             {{ $product->detail ?: 'Sacred botanical extract handcrafted according to Vedic traditions, third-party lab tested, and 100% natural.' }}
           </p>
 
           <!-- Quick Benefits Checklist -->
-          <div class="row g-2 mb-4">
+          <div class="row g-2 mb-3 mb-md-4">
             <div class="col-12 col-sm-6">
               <div class="d-flex align-items-center gap-2 small text-muted">
-                <i class="bi bi-check-circle-fill text-success"></i> 100% Vegetarian &amp; GMO-Free
+                <i class="bi bi-check-circle-fill text-success flex-shrink-0"></i> <span>100% Vegetarian &amp; GMO-Free</span>
               </div>
             </div>
             <div class="col-12 col-sm-6">
               <div class="d-flex align-items-center gap-2 small text-muted">
-                <i class="bi bi-check-circle-fill text-success"></i> Heavy-Metal Tested (Lead &amp; Mercury Free)
+                <i class="bi bi-check-circle-fill text-success flex-shrink-0"></i> <span>Heavy-Metal Tested (Lead &amp; Mercury Free)</span>
               </div>
             </div>
             <div class="col-12 col-sm-6">
               <div class="d-flex align-items-center gap-2 small text-muted">
-                <i class="bi bi-check-circle-fill text-success"></i> No Synthetic Binders or Fillers
+                <i class="bi bi-check-circle-fill text-success flex-shrink-0"></i> <span>No Synthetic Binders or Fillers</span>
               </div>
             </div>
             <div class="col-12 col-sm-6">
               <div class="d-flex align-items-center gap-2 small text-muted">
-                <i class="bi bi-check-circle-fill text-success"></i> Ayush &amp; GMP Standard Certified
+                <i class="bi bi-check-circle-fill text-success flex-shrink-0"></i> <span>Ayush &amp; GMP Standard Certified</span>
               </div>
             </div>
           </div>
 
           <!-- Purchase Action Controls Box -->
-          <div class="p-3 p-md-4 rounded-3 border mb-4" style="background: #FAFAFA; border-color: rgba(216, 188, 141, 0.4) !important;">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <label for="productDetailQty" class="fw-bold small mb-0" style="color: var(--heading-color);">Quantity:</label>
-              <div class="cart-qty-control" style="background: #FFFFFF;">
-                <button type="button" class="cart-qty-btn" onclick="adjustProductPageQty(-1)" aria-label="Decrease quantity">-</button>
-                <span class="cart-qty-val" id="productDetailQty">1</span>
-                <button type="button" class="cart-qty-btn" onclick="adjustProductPageQty(1)" aria-label="Increase quantity">+</button>
+          <div class="p-3 p-md-4 rounded-3 border mb-3 mb-md-4 product-buy-box" style="background: #FAFAFA; border-color: rgba(216, 188, 141, 0.4) !important;">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+              <div class="d-flex align-items-center gap-2">
+                <label for="productDetailQty" class="fw-bold small mb-0" style="color: var(--heading-color);">Quantity:</label>
+                <div class="cart-qty-control" style="background: #FFFFFF;">
+                  <button type="button" class="cart-qty-btn" onclick="adjustProductPageQty(-1)" aria-label="Decrease quantity">-</button>
+                  <span class="cart-qty-val" id="productDetailQty">1</span>
+                  <button type="button" class="cart-qty-btn" onclick="adjustProductPageQty(1)" aria-label="Increase quantity">+</button>
+                </div>
               </div>
-              <span class="small text-muted ms-auto"><i class="bi bi-lightning-charge-fill text-warning"></i> Fast Dispatch</span>
+              <span class="small text-muted"><i class="bi bi-lightning-charge-fill text-warning"></i> Fast Dispatch</span>
             </div>
 
             <!-- Action Buttons -->
-            <div class="d-flex flex-wrap gap-2">
+            <div class="d-flex flex-column flex-sm-row gap-2">
               <button type="button" class="btn btn-primary flex-grow-1 py-3 fw-bold text-uppercase" onclick="addProductPageToCart()" style="letter-spacing: 0.5px;">
                 <i class="bi bi-bag-plus-fill me-2"></i> ADD TO CART
               </button>
@@ -191,17 +195,17 @@
           </div>
 
           <!-- Formulation Fast Facts Strip -->
-          <div class="d-flex flex-wrap gap-3 p-3 rounded bg-light border small text-muted">
-            <div>
-              <span class="d-block fw-bold" style="color: var(--heading-color); font-size: 0.76rem; text-transform: uppercase;">Dosage Protocol</span>
-              <span>{{ $product->how_to_use ? \Illuminate\Support\Str::limit($product->how_to_use, 38) : '1-2 capsules daily' }}</span>
+          <div class="row g-2 p-2 p-md-3 rounded bg-light border small text-muted formulation-facts-strip">
+            <div class="col-12 col-sm-4 mb-2 mb-sm-0">
+              <span class="d-block fw-bold" style="color: var(--heading-color); font-size: 0.74rem; text-transform: uppercase;">Dosage Protocol</span>
+              <span class="d-block text-truncate">{{ $product->how_to_use ? \Illuminate\Support\Str::limit($product->how_to_use, 30) : '1-2 capsules daily' }}</span>
             </div>
-            <div class="border-start ps-3">
-              <span class="d-block fw-bold" style="color: var(--heading-color); font-size: 0.76rem; text-transform: uppercase;">Carrier (Anupana)</span>
-              <span>Warm Milk / Warm Water</span>
+            <div class="col-12 col-sm-4 border-sm-start ps-sm-3 mb-2 mb-sm-0">
+              <span class="d-block fw-bold" style="color: var(--heading-color); font-size: 0.74rem; text-transform: uppercase;">Carrier (Anupana)</span>
+              <span>Warm Milk / Water</span>
             </div>
-            <div class="border-start ps-3">
-              <span class="d-block fw-bold" style="color: var(--heading-color); font-size: 0.76rem; text-transform: uppercase;">Extraction Type</span>
+            <div class="col-12 col-sm-4 border-sm-start ps-sm-3">
+              <span class="d-block fw-bold" style="color: var(--heading-color); font-size: 0.74rem; text-transform: uppercase;">Extraction Type</span>
               <span>Full-Spectrum Potent</span>
             </div>
           </div>
@@ -214,37 +218,37 @@
 </section>
 
 <!-- 3. Comprehensive Product Details Tabs Section -->
-<section class="product-tabs-section py-5" id="productTabs" style="background-color: var(--body-bg); border-top: 1px solid rgba(216, 188, 141, 0.25);">
+<section class="product-tabs-section py-4 py-lg-5" id="productTabs" style="background-color: var(--body-bg); border-top: 1px solid rgba(216, 188, 141, 0.25);">
   <div class="container-custom">
     
     <!-- Tab Nav Headers -->
-    <div class="product-tabs-header-wrap mb-4">
+    <div class="product-tabs-header-wrap mb-3 mb-md-4">
       <ul class="nav nav-tabs product-nav-tabs border-0 d-flex justify-content-start flex-nowrap overflow-x-auto gap-2 pb-2" id="detailTabs" role="tablist">
-        <li class="nav-item" role="presentation">
+        <li class="nav-item flex-shrink-0" role="presentation">
           <button class="nav-link product-tab-btn active" id="tab-overview-btn" data-bs-toggle="tab" data-bs-target="#pane-overview" type="button" role="tab" aria-controls="pane-overview" aria-selected="true">
-            <i class="bi bi-info-circle me-2 text-warning"></i> 1. Sacred Formulation
+            <i class="bi bi-info-circle me-1 me-sm-2 text-warning"></i> 1. Sacred Formulation
           </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item flex-shrink-0" role="presentation">
           <button class="nav-link product-tab-btn" id="tab-howtouse-btn" data-bs-toggle="tab" data-bs-target="#pane-howtouse" type="button" role="tab" aria-controls="pane-howtouse" aria-selected="false">
-            <i class="bi bi-clock-history me-2 text-warning"></i> 2. How to Use &amp; Rituals
+            <i class="bi bi-clock-history me-1 me-sm-2 text-warning"></i> 2. How to Use &amp; Rituals
           </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item flex-shrink-0" role="presentation">
           <button class="nav-link product-tab-btn" id="tab-faqs-btn" data-bs-toggle="tab" data-bs-target="#pane-faqs" type="button" role="tab" aria-controls="pane-faqs" aria-selected="false">
-            <i class="bi bi-question-circle me-2 text-warning"></i> 3. FAQs &amp; Clarity ({{ $product->activeFaqs->count() }})
+            <i class="bi bi-question-circle me-1 me-sm-2 text-warning"></i> 3. FAQs ({{ $product->activeFaqs->count() }})
           </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item flex-shrink-0" role="presentation">
           <button class="nav-link product-tab-btn" id="tab-reviews-btn" data-bs-toggle="tab" data-bs-target="#pane-reviews" type="button" role="tab" aria-controls="pane-reviews" aria-selected="false">
-            <i class="bi bi-star-fill me-2 text-warning"></i> 4. Verified Reviews ({{ $product->reviews->count() }})
+            <i class="bi bi-star-fill me-1 me-sm-2 text-warning"></i> 4. Reviews ({{ $product->reviews->count() }})
           </button>
         </li>
       </ul>
     </div>
 
     <!-- Tab Panes Content -->
-    <div class="tab-content bg-white p-4 p-md-5 rounded-4 border shadow-sm" id="detailTabsContent" style="border-color: rgba(216, 188, 141, 0.35) !important;">
+    <div class="tab-content bg-white p-3 p-sm-4 p-md-5 rounded-4 border shadow-sm" id="detailTabsContent" style="border-color: rgba(216, 188, 141, 0.35) !important;">
 
       <!-- Tab 1: Sacred Formulation & Highlights -->
       <div class="tab-pane fade show active" id="pane-overview" role="tabpanel" aria-labelledby="tab-overview-btn">
@@ -417,7 +421,7 @@
       <!-- Tab 4: Verified Customer Reviews -->
       <div class="tab-pane fade" id="pane-reviews" role="tabpanel" aria-labelledby="tab-reviews-btn">
         <div class="row g-4 align-items-center mb-4 pb-4 border-bottom">
-          <div class="col-md-4 text-center border-end">
+          <div class="col-12 col-md-4 text-center border-md-end mb-3 mb-md-0 pb-3 pb-md-0 border-bottom border-md-bottom-0">
             <div class="display-4 fw-bold" style="color: var(--heading-color); font-family: var(--font-family);">{{ number_format($product->rating, 1) }}</div>
             <div class="stars text-warning fs-5 my-2">
               @for($i = 1; $i <= 5; $i++)
@@ -430,10 +434,10 @@
                 @endif
               @endfor
             </div>
-            <span class="small text-muted fw-semibold">Based on {{ $product->reviews_count }} verified buyer ratings</span>
+            <span class="small text-muted fw-semibold">Based on {{ $product->reviews_count }} ratings</span>
           </div>
 
-          <div class="col-md-8">
+          <div class="col-12 col-md-8 text-center text-md-start">
             <h4 class="h5 fw-bold mb-2" style="color: var(--heading-color);">Real Experiences from Real Customers</h4>
             <p class="small text-muted mb-0">
               Read verified feedback from individuals who have integrated {{ $product->name }} into their daily wellness journey.

@@ -353,50 +353,66 @@
 
       <div class="col-lg-6">
         <div class="about-visual-wrap">
-          <img src="{{ asset('image/about.jpg') }}" alt="Power Veda Botanical Preparation" class="about-img" loading="lazy">
+          <img src="{{ asset('image/about.jpg') }}" alt="Power Veda Botanical Preparation & Clinical Heritage" class="about-img" loading="lazy">
           <div class="about-heritage-badge">
-            <div class="about-badge-number">100%</div>
-            <div class="about-badge-label">Natural &amp; Trusted</div>
+            <div class="about-badge-number">2006</div>
+            <div class="about-badge-label">Ayurvedic Heritage</div>
           </div>
         </div>
       </div>
 
       <div class="col-lg-6">
-        <span class="section-tag tag-wellness">About Power Veda</span>
-        <h2 class="section-title text-start mb-3">Ancient Wisdom Engineered for Modern Strength</h2>
-        <p class="text-muted mb-4">
-          Power Veda was founded on the unyielding principle that true human vitality stems from harmonious alignment
-          with nature. We unite classical Vedic knowledge with advanced modern extraction standards to deliver
-          unparalleled purity and effectiveness.
+        <span class="section-tag tag-wellness"><i class="bi bi-flower1 me-1"></i> About Power Veda</span>
+        <h2 class="section-title text-start mb-3">Traditional Ayurveda. <span class="gold-text">Modern Men’s Wellness.</span></h2>
+        <p class="text-muted mb-3" style="font-size: 1rem; line-height: 1.7;">
+          <strong>Power Veda</strong> is a specialized men’s wellness brand committed to supporting modern men with thoughtfully developed Ayurvedic wellness solutions inspired by traditional Indian knowledge and contemporary lifestyle needs.
+        </p>
+        <p class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.65;">
+          Power Veda is an <strong>associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since <strong>2006</strong>. This association brings decades of patient care, wellness consultation, and clinical formulation expertise directly to men's health.
         </p>
 
-        <ul class="about-philosophy-list">
-          <li class="about-philosophy-item">
-            <i class="bi bi-shield-fill-check"></i>
-            <div>
-              <strong style="color: var(--heading-color);">Strength &amp; Cellular Vitality</strong>
-              <p class="text-muted small mb-0">High-potency adaptogens formulated to increase physical energy, focus, and resilience.</p>
+        <div class="row g-2 mb-4">
+          <div class="col-sm-6">
+            <div class="d-flex align-items-center gap-2 p-2 rounded bg-light border">
+              <i class="bi bi-heart-pulse-fill text-warning fs-5"></i>
+              <span class="small fw-semibold text-dark">Overall Vitality &amp; Energy</span>
             </div>
-          </li>
-          <li class="about-philosophy-item">
-            <i class="bi bi-flower1"></i>
-            <div>
-              <strong style="color: var(--heading-color);">Wildcrafted &amp; Ethically Sourced</strong>
-              <p class="text-muted small mb-0">Partnering directly with sustainable Himalayan organic cultivators with fair-trade ethics.</p>
+          </div>
+          <div class="col-sm-6">
+            <div class="d-flex align-items-center gap-2 p-2 rounded bg-light border">
+              <i class="bi bi-peace-fill text-success fs-5"></i>
+              <span class="small fw-semibold text-dark">Stress &amp; Lifestyle Balance</span>
             </div>
-          </li>
-          <li class="about-philosophy-item">
-            <i class="bi bi-award-fill"></i>
-            <div>
-              <strong style="color: var(--heading-color);">Gold-Standard Quality &amp; Testing</strong>
-              <p class="text-muted small mb-0">Every batch is certified by independent laboratories for active botanical bio-markers.</p>
+          </div>
+          <div class="col-sm-6">
+            <div class="d-flex align-items-center gap-2 p-2 rounded bg-light border">
+              <i class="bi bi-lightning-charge-fill text-primary fs-5"></i>
+              <span class="small fw-semibold text-dark">Strength &amp; Performance</span>
             </div>
-          </li>
-        </ul>
+          </div>
+          <div class="col-sm-6">
+            <div class="d-flex align-items-center gap-2 p-2 rounded bg-light border">
+              <i class="bi bi-box-seam-fill text-secondary fs-5"></i>
+              <span class="small fw-semibold text-dark">Discreet &amp; Pure Experience</span>
+            </div>
+          </div>
+        </div>
 
-        <a href="#shop" class="btn btn-secondary">
-          DISCOVER OUR PRODUCTS <i class="bi bi-arrow-right ms-1"></i>
-        </a>
+        <div class="p-3 mb-4 rounded-3" style="background: rgba(216, 188, 141, 0.12); border-left: 3px solid var(--gold-color);">
+          <p class="small text-muted mb-0">
+            <strong class="text-dark"><i class="bi bi-shield-check text-warning me-1"></i> Business Association:</strong>
+            Power Veda operates in association with M.C.D.C.R. Vaidraj Disease Eradication Center. Certain payments, invoices, and operational services may be processed under authorized accounts of M.C.D.C.R. Vaidraj.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#shop" class="btn btn-secondary">
+            DISCOVER PRODUCTS <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+          <a href="{{ route('about') }}" class="btn btn-outline-dark">
+            READ OUR FULL STORY <i class="bi bi-file-earmark-person ms-1"></i>
+          </a>
+        </div>
       </div>
 
     </div>

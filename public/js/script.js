@@ -707,12 +707,68 @@ function setupNewsletter() {
 }
 
 // --------------------------------------------------------------------------
-// 9. Sticky Navbar, Auto-Close Mobile Menu, Back To Top
+// 9. Navigation, Smooth Scroll with Offset, Mobile Drawer & Active Highlights
 // --------------------------------------------------------------------------
+function scrollToTargetWithOffset(targetSelector, smooth = true) {
+  if (!targetSelector) return;
+  const targetId = targetSelector.replace(/^#/, '');
+  const targetEl = document.getElementById(targetId) || document.querySelector(targetSelector);
+  if (!targetEl) return false;
+
+  const header = document.querySelector('.site-header');
+  const headerHeight = header ? header.getBoundingClientRect().height : 80;
+  const offset = headerHeight + 10;
+  const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+  const offsetPosition = Math.max(0, elementPosition - offset);
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: smooth ? 'smooth' : 'auto'
+  });
+  return true;
+}
+
+function closeMobileDrawer() {
+  const drawerEl = document.getElementById('mobileNavDrawer');
+  if (!drawerEl) return;
+
+  // 1. Trigger close button click if present
+  const closeBtn = drawerEl.querySelector('.mobile-nav-close-btn');
+  if (closeBtn) {
+    closeBtn.click();
+  }
+
+  // 2. Hide via Bootstrap Offcanvas API
+  try {
+    if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+      const bsOffcanvas = bootstrap.Offcanvas.getInstance(drawerEl) || bootstrap.Offcanvas.getOrCreateInstance(drawerEl);
+      if (bsOffcanvas) {
+        bsOffcanvas.hide();
+      }
+    }
+  } catch (err) {
+    console.warn('Offcanvas hide exception', err);
+  }
+
+  // 3. Fallback cleanup
+  setTimeout(() => {
+    if (drawerEl.classList.contains('show')) {
+      drawerEl.classList.remove('show', 'showing');
+      const backdrops = document.querySelectorAll('.offcanvas-backdrop');
+      backdrops.forEach(b => b.remove());
+      document.body.classList.remove('modal-open');
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('padding-right');
+    }
+  }, 250);
+}
+
 function setupNavigation() {
   const header = document.querySelector('.site-header');
   const backToTopBtn = document.getElementById('back-to-top');
+  const drawerEl = document.getElementById('mobileNavDrawer');
 
+  // 1. Sticky Header & Back-To-Top Button
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
 
@@ -731,6 +787,8 @@ function setupNavigation() {
         backToTopBtn.classList.remove('visible');
       }
     }
+
+    updateActiveNavLinks();
   });
 
   if (backToTopBtn) {
@@ -739,17 +797,111 @@ function setupNavigation() {
     });
   }
 
-  // Auto-close mobile navbar on link click or mobile action button click
-  const mobileTriggers = document.querySelectorAll('.navbar-nav .nav-link, .mobile-menu-actions button');
-  const navbarCollapse = document.querySelector('.navbar-collapse');
-  mobileTriggers.forEach(el => {
-    el.addEventListener('click', () => {
-      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-        if (bsCollapse) bsCollapse.hide();
+  // 2. Mobile Drawer Navigation Links (Always close drawer & smooth scroll/redirect)
+  const drawerLinks = document.querySelectorAll('#mobileNavDrawer a, #mobileNavDrawer button:not(.mobile-nav-close-btn)');
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (link.id === 'mobile-auth-link' || link.classList.contains('mobile-login-btn')) return;
+
+      const href = link.getAttribute('href');
+      closeMobileDrawer();
+
+      if (href) {
+        const hashIdx = href.indexOf('#');
+        if (hashIdx !== -1) {
+          const hash = href.substring(hashIdx);
+          const targetEl = document.querySelector(hash);
+          if (targetEl) {
+            e.preventDefault();
+            setTimeout(() => {
+              scrollToTargetWithOffset(hash, true);
+              if (history.pushState) {
+                history.pushState(null, null, hash);
+              }
+            }, 200);
+          }
+        }
       }
     });
   });
+
+  // 3. Desktop Navigation Links
+  const desktopLinks = document.querySelectorAll('.navbar-nav a');
+  desktopLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#' || href.startsWith('javascript:')) return;
+
+      const hashIdx = href.indexOf('#');
+      if (hashIdx !== -1) {
+        const hash = href.substring(hashIdx);
+        const targetEl = document.querySelector(hash);
+        if (targetEl) {
+          e.preventDefault();
+          scrollToTargetWithOffset(hash, true);
+          if (history.pushState) {
+            history.pushState(null, null, hash);
+          }
+        }
+      }
+    });
+  });
+
+  // 4. Mobile Login / Register Button trigger
+  const mobileAuthBtn = document.getElementById('mobile-auth-link');
+  if (mobileAuthBtn) {
+    mobileAuthBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileDrawer();
+      setTimeout(() => {
+        const authModalEl = document.getElementById('authModal');
+        if (authModalEl) {
+          const authModal = bootstrap.Modal.getOrCreateInstance(authModalEl);
+          authModal.show();
+        }
+      }, 250);
+    });
+  }
+
+  // 5. Auto-Scroll on Page Load if URL has a Hash
+  if (window.location.hash) {
+    setTimeout(() => {
+      scrollToTargetWithOffset(window.location.hash, true);
+    }, 250);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 9.1 Active Navigation Item Highlighting on Scroll
+// --------------------------------------------------------------------------
+function updateActiveNavLinks() {
+  const sections = document.querySelectorAll('section[id]');
+  if (!sections.length) return;
+
+  const scrollY = window.scrollY;
+  const header = document.querySelector('.site-header');
+  const headerHeight = (header ? header.getBoundingClientRect().height : 80) + 20;
+
+  let currentSectionId = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - headerHeight;
+    const sectionHeight = section.offsetHeight;
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      currentSectionId = section.getAttribute('id');
+    }
+  });
+
+  if (currentSectionId) {
+    const allLinks = document.querySelectorAll('.navbar-nav .nav-link, .mobile-nav-list .mobile-nav-link');
+    allLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.endsWith('#' + currentSectionId) || href === '#' + currentSectionId) {
+        link.classList.add('active');
+      } else if (href.includes('#')) {
+        link.classList.remove('active');
+      }
+    });
+  }
 }
 
 // --------------------------------------------------------------------------

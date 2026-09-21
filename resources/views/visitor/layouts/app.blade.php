@@ -7,6 +7,7 @@
   <title>@yield('title', 'Power Veda - Premium Wellness, Strength & Vitality')</title>
   <meta name="description" content="@yield('meta_description', 'Discover Power Veda: Premium wellness formulations designed to support strength, vitality, and a healthier lifestyle. 100% natural, pure, and trustworthy.')">
   <meta name="keywords" content="@yield('meta_keywords', 'Power Veda, wellness, strength, vitality, natural, Ayurvedic, health supplements, pure formulations')">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Favicon -->

@@ -58,7 +58,7 @@
           <h2 class="policy-section-title">
             <i class="bi bi-wallet2"></i> 2. Refund Processing &amp; Timelines
           </h2>
-          <p class="policy-text">Once your return request is approved:</p>
+          <p class="policy-text">Once your return request is approved (processed through the authorized banking and accounts of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>):</p>
           <ul class="policy-list">
             <li><strong>UPI &amp; Net Banking:</strong> Refunds are credited within <strong>24 to 48 hours</strong> directly to the original bank account.</li>
             <li><strong>Credit / Debit Cards:</strong> Refunds reflect on your card statement within <strong>3 to 5 business days</strong> depending on your issuing bank.</li>

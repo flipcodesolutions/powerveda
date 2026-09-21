@@ -542,6 +542,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.35rem;
 }
 
+section[id] {
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
 .mobile-nav-link {
   display: flex;
   align-items: center;
@@ -554,6 +558,11 @@ h1, h2, h3, h4, h5, h6 {
   transition: all var(--transition);
   border: 1px solid transparent;
   text-decoration: none;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .mobile-nav-link .nav-left {
@@ -2684,7 +2693,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   24. Dedicated Product Detail Page Styles
+   24. Dedicated Product Detail Page Styles & Responsive Mobile Optimizations
    -------------------------------------------------------------------------- */
 .product-breadcrumb-bar {
   background: var(--body-bg);
@@ -2706,18 +2715,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-img-zoom-wrap {
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
 }
 
 .product-detail-main-img {
+  max-height: 420px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-main-img-card:hover .product-detail-main-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
+}
+
+.product-page-title {
+  font-size: clamp(1.35rem, 4vw, 2.25rem);
+  line-height: 1.25;
 }
 
 .product-nav-tabs {
   gap: 0.5rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-nav-tabs::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .product-tab-btn {
@@ -2731,6 +2760,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9rem;
   transition: all 0.25s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .product-tab-btn:hover {
@@ -2752,6 +2782,106 @@ h1, h2, h3, h4, h5, h6 {
 
 .related-products-section {
   background: var(--white-color);
+}
+
+@media (min-width: 576px) {
+  .border-sm-start {
+    border-left: 1px solid rgba(216, 188, 141, 0.35) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .border-md-end {
+    border-right: 1px solid rgba(216, 188, 141, 0.35) !important;
+  }
+  .border-md-bottom-0 {
+    border-bottom: none !important;
+  }
+}
+
+/* Responsive Media Queries for Product Detail & Mobile Experience */
+@media (max-width: 991.98px) {
+  .product-gallery-sticky {
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+  .product-detail-main-img {
+    max-height: 340px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .product-showcase-section,
+  .product-tabs-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .product-detail-main-img {
+    max-height: 280px;
+  }
+  .border-md-end {
+    border-right: none !important;
+  }
+  .border-sm-start {
+    border-left: none !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .product-showcase-section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .product-main-img-card {
+    padding: 0.5rem 0.75rem !important;
+    border-radius: var(--radius-md) !important;
+  }
+  .product-detail-main-img {
+    max-height: 220px;
+  }
+  .product-trust-pill {
+    padding: 0.4rem 0.2rem !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  .product-trust-pill i {
+    font-size: 1rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+  .product-trust-pill span {
+    font-size: 0.65rem !important;
+    letter-spacing: -0.2px;
+  }
+  .product-page-title {
+    font-size: 1.3rem !important;
+    line-height: 1.25 !important;
+  }
+  .product-tab-btn {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.78rem !important;
+  }
+  .ritual-step-card {
+    padding: 1.1rem 0.85rem !important;
+  }
+  .ritual-icon-box {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.15rem !important;
+  }
+  .vedic-wisdom-box {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 1.1rem 0.85rem !important;
+  }
+  .wisdom-icon-circle {
+    margin: 0 auto !important;
+  }
+  .back-to-top-btn {
+    bottom: 14px !important;
+    right: 14px !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.9rem !important;
+  }
 }
 
 /* --------------------------------------------------------------------------

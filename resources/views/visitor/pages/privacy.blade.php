@@ -38,7 +38,7 @@
           </div>
 
           <p class="policy-text">
-            At <strong>Power Veda</strong>, we are committed to safeguarding the personal information of our valued customers. This Privacy Policy details how we collect, utilize, store, and protect your information when you visit our website or make a purchase.
+            At <strong>Power Veda</strong> (an associated men’s wellness brand of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, serving patients since 2006), we are committed to safeguarding the personal information and confidentiality of our valued customers. This Privacy Policy details how we collect, utilize, store, and protect your information when you visit our website or make a purchase.
           </p>
 
           <h2 class="policy-section-title">

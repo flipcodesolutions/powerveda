@@ -38,31 +38,32 @@
           </div>
 
           <p class="policy-text">
-            Welcome to <strong>Power Veda</strong> (operated by Power Veda Wellness Private Limited). By accessing our website, browsing our catalog, or purchasing our premium botanical products, you agree to comply with and be bound by the following terms and conditions.
+            Welcome to <strong>Power Veda</strong>. Power Veda is an associated men’s wellness brand of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since 2006. By accessing our website, browsing our catalog, or purchasing our premium botanical products, you agree to comply with and be bound by the following terms and conditions.
           </p>
 
           <h2 class="policy-section-title">
-            <i class="bi bi-1-circle-fill"></i> 1. Acceptance of Terms
+            <i class="bi bi-1-circle-fill"></i> 1. Acceptance of Terms &amp; Business Association
           </h2>
           <p class="policy-text">
-            These Terms &amp; Conditions govern your use of the Power Veda web platform and all associated services. If you do not agree with any part of these terms, you must discontinue your use of our platform immediately. We reserve the right to amend these terms at any time without prior individual notice.
+            These Terms &amp; Conditions govern your use of the Power Veda web platform and all associated services. Power Veda operates with the support and experience of M.C.D.C.R. Vaidraj Disease Eradication Center in areas including Ayurvedic wellness knowledge, product development, healthcare guidance, quality-focused processes, customer support, and business operations.
           </p>
 
           <h2 class="policy-section-title">
             <i class="bi bi-2-circle-fill"></i> 2. Botanical Wellness &amp; Health Disclaimer
           </h2>
           <p class="policy-text">
-            All Power Veda formulations (including Ashwagandha Gold KSM-66, Saffron Radiance Elixirs, and Herbal Tonics) are crafted with pure natural botanicals and manufactured under strict AYUSH guidelines.
+            All Power Veda formulations are crafted with pure natural botanicals and manufactured under strict AYUSH guidelines with healthcare heritage backed by M.C.D.C.R. Vaidraj Disease Eradication Center.
           </p>
           <div class="policy-highlight-box">
             <strong style="color: var(--heading-color);">Important Medical Disclaimer:</strong> The statements and products on this website have not been evaluated as medical pharmaceuticals to diagnose, treat, cure, or prevent any clinical disease. Consult your qualified physician before beginning any new botanical wellness regimen if you are pregnant, nursing, or undergoing clinical treatment.
           </div>
 
           <h2 class="policy-section-title">
-            <i class="bi bi-3-circle-fill"></i> 3. Ordering, Pricing &amp; Payments
+            <i class="bi bi-3-circle-fill"></i> 3. Ordering, Pricing, Billing &amp; Payment Processing
           </h2>
           <ul class="policy-list">
             <li><strong>Pricing:</strong> All prices listed are in Indian Rupees (₹ INR) and include applicable GST taxes.</li>
+            <li><strong>Payment &amp; Operational Processing:</strong> Power Veda is an associated men’s wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center. Certain operational services of Power Veda, including banking, payment processing, billing, invoices, customer support, logistics or other commercial activities, may be managed through <strong>M.C.D.C.R. Vaidraj Disease Eradication Center and its authorized business accounts</strong>, wherever applicable.</li>
             <li><strong>Payment Security:</strong> Transactions are securely processed through encrypted 256-Bit SSL gateways supporting UPI, Net Banking, Credit/Debit Cards, and Cash on Delivery (COD where eligible).</li>
             <li><strong>Order Confirmation:</strong> An automated SMS and email notification will be dispatched upon successful order verification.</li>
           </ul>
