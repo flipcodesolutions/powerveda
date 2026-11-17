@@ -1,8 +1,8 @@
 @extends('visitor.layouts.app')
 
-@section('title', $product->meta_title ?: ($product->name . ' - Power Veda Strength & Vitality'))
-@section('meta_description', $product->meta_detail ?: ($product->detail ?: 'Discover ' . $product->name . ' by Power Veda. 100% natural and pure Ayurvedic formulation for strength, vitality, and holistic wellness.'))
-@section('meta_keywords', 'Power Veda, ' . $product->name . ', Ayurveda, wellness, vitality, strength, natural health supplement')
+@section('title', $product->meta_title ?: ($product->name . ' - Yuvar Dhan Strength & Vitality'))
+@section('meta_description', $product->meta_detail ?: ($product->detail ?: 'Discover ' . $product->name . ' by Yuvar Dhan. 100% natural and pure Ayurvedic formulation for strength, vitality, and holistic wellness.'))
+@section('meta_keywords', 'Yuvar Dhan, ' . $product->name . ', Ayurveda, wellness, vitality, strength, natural health supplement')
 
 @push('styles')
 <meta property="og:title" content="{{ $product->meta_title ?: $product->name }}">
@@ -259,7 +259,7 @@
               {{ $product->detail }}
             </p>
             <p class="text-muted" style="line-height: 1.8; font-size: 0.98rem;">
-              Power Veda formulations are crafted with single-source wildcrafted botanicals harvested sustainably from native Himalayan altitudes and fertile Ayurvedic belts. Using gentle low-temperature green extraction, we protect the full therapeutic spectrum of withanolides, curcuminoids, and essential botanical bio-markers.
+              Yuvar Dhan formulations are crafted with single-source wildcrafted botanicals harvested sustainably from native Himalayan altitudes and fertile Ayurvedic belts. Using gentle low-temperature green extraction, we protect the full therapeutic spectrum of withanolides, curcuminoids, and essential botanical bio-markers.
             </p>
 
             <div class="row g-3 mt-3">
@@ -552,10 +552,10 @@
     '@type'    => 'Product',
     'name'     => $product->name,
     'image'    => [$product->photo_url],
-    'description' => $product->detail ?: 'Pure Ayurvedic formulation by Power Veda.',
+    'description' => $product->detail ?: 'Pure Ayurvedic formulation by Yuvar Dhan.',
     'brand'    => [
       '@type' => 'Brand',
-      'name'  => 'Power Veda'
+      'name'  => 'Yuvar Dhan'
     ],
     'offers'   => [
       '@type'         => 'Offer',

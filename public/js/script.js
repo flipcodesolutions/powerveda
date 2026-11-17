@@ -1,10 +1,10 @@
 /**
- * Power Veda - Premium Wellness & Strength
+ * Yuvar Dhan - Premium Wellness & Strength
  * JavaScript Interactive Functionality (Static Product DOM Integration)
  */
 
 /**
- * Power Veda - Helper Functions
+ * Yuvar Dhan - Helper Functions
  */
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
@@ -22,7 +22,7 @@ function escapeHtml(str) {
 let productsData = [
   {
     id: 1,
-    name: "Power Veda Ashwagandha Gold KSM-66",
+    name: "Yuvar Dhan Ashwagandha Gold KSM-66",
     price: 1499,
     originalPrice: 1999,
     discount: "25% OFF",
@@ -34,7 +34,7 @@ let productsData = [
   },
   {
     id: 2,
-    name: "Power Veda Himalayan Detox Elixir",
+    name: "Yuvar Dhan Himalayan Detox Elixir",
     price: 899,
     originalPrice: 1199,
     discount: "25% OFF",
@@ -46,7 +46,7 @@ let productsData = [
   },
   {
     id: 3,
-    name: "Power Veda 24K Saffron Radiance Elixir",
+    name: "Yuvar Dhan 24K Saffron Radiance Elixir",
     price: 2499,
     originalPrice: 3299,
     discount: "24% OFF",
@@ -58,7 +58,7 @@ let productsData = [
   },
   {
     id: 4,
-    name: "Power Veda Triphala Gut Vitality",
+    name: "Yuvar Dhan Triphala Gut Vitality",
     price: 799,
     originalPrice: 999,
     discount: "20% OFF",
@@ -70,7 +70,7 @@ let productsData = [
   },
   {
     id: 5,
-    name: "Power Veda Brahmi Mind Focus Tonic",
+    name: "Yuvar Dhan Brahmi Mind Focus Tonic",
     price: 1199,
     originalPrice: 1599,
     discount: "25% OFF",
@@ -82,7 +82,7 @@ let productsData = [
   },
   {
     id: 6,
-    name: "Power Veda Turmeric Curcumin 95%",
+    name: "Yuvar Dhan Turmeric Curcumin 95%",
     price: 1299,
     originalPrice: 1699,
     discount: "23% OFF",
@@ -94,7 +94,7 @@ let productsData = [
   },
   {
     id: 7,
-    name: "Power Veda Neem & Tulsi Purifying Cleanse",
+    name: "Yuvar Dhan Neem & Tulsi Purifying Cleanse",
     price: 699,
     originalPrice: 899,
     discount: "22% OFF",
@@ -106,7 +106,7 @@ let productsData = [
   },
   {
     id: 8,
-    name: "Power Veda Cold-Pressed Sweet Almond Oil",
+    name: "Yuvar Dhan Cold-Pressed Sweet Almond Oil",
     price: 999,
     originalPrice: 1299,
     discount: "23% OFF",
@@ -194,7 +194,7 @@ async function addToCart(productOrId, qty = 1, explicitData = null) {
     // Safe fallback to ensure adding always succeeds
     product = {
       id: productOrId,
-      name: 'Power Veda Formulation',
+      name: 'Yuvar Dhan Formulation',
       price: 999,
       image: '/image/products/product-1.jpg'
     };
@@ -701,7 +701,7 @@ function setupNewsletter() {
       return;
     }
 
-    showToast('Welcome to Power Veda Circle! Use code POWER35 for 35% off.', 'success');
+    showToast('Welcome to Yuvar Dhan Circle! Use code POWER35 for 35% off.', 'success');
     input.value = '';
   });
 }
@@ -1160,7 +1160,7 @@ async function handleRegisterSubmit(event) {
       const modal = bootstrap.Modal.getInstance(authModalEl);
       if (modal) modal.hide();
 
-      showToast(data.message || `Welcome to Power Veda, ${currentUser.name}!`, 'success');
+      showToast(data.message || `Welcome to Yuvar Dhan, ${currentUser.name}!`, 'success');
     } else {
       const errMsg = (data.errors && Object.values(data.errors).flat()[0]) || data.message || 'Registration failed. Please check your inputs.';
       if (alertEl) {

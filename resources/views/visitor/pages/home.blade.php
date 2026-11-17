@@ -1,8 +1,8 @@
 @extends('visitor.layouts.app')
 
-@section('title', 'Power Veda - Premium Wellness, Strength & Vitality')
-@section('meta_description', 'Discover Power Veda: Premium wellness formulations designed to support strength, vitality, and a healthier lifestyle. 100% natural, pure, and trustworthy.')
-@section('meta_keywords', 'Power Veda, wellness, strength, vitality, natural, Ayurvedic, health supplements, pure formulations')
+@section('title', 'Yuvar Dhan - Premium Wellness, Strength & Vitality')
+@section('meta_description', 'Discover Yuvar Dhan: Premium wellness formulations designed to support strength, vitality, and a healthier lifestyle. 100% natural, pure, and trustworthy.')
+@section('meta_keywords', 'Yuvar Dhan, wellness, strength, vitality, natural, Ayurvedic, health supplements, pure formulations')
 
 @section('content')
 <!-- 1. Hero Section (Deep Navy with Gold Accents) -->
@@ -82,7 +82,7 @@
                 @endif
               </div>
               <div class="d-flex gap-2">
-                <a href="{{ route('product.detail', $latestProduct->slug ?: $latestProduct->id) }}" class="btn btn-sm btn-outline-secondary" title="View Details">
+                <a href="{{ route('product.detail', $latestProduct->slug ?: $latestProduct->id) }}" class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center justify-content-center" title="View Details">
                   <i class="bi bi-eye"></i>
                 </a>
                 <button class="btn btn-sm btn-primary" onclick="addToCart({{ $latestProduct->id }})">
@@ -98,13 +98,13 @@
   </div>
 </section>
 
-<!-- 2. Why Choose Power Veda (4 Feature Cards) -->
-<section class="why-choose-section" id="why-us" aria-label="Why Choose Power Veda">
+<!-- 2. Why Choose Yuvar Dhan (4 Feature Cards) -->
+<section class="why-choose-section" id="why-us" aria-label="Why Choose Yuvar Dhan">
   <div class="container-custom">
     <div class="section-header">
       <span class="section-tag tag-wellness">Our Foundations</span>
-      <h2 class="section-title">Why Choose Power Veda</h2>
-      <p class="section-desc">Every Power Veda formulation is guided by four foundational pillars of authentic health and enduring vitality.</p>
+      <h2 class="section-title">Why Choose Yuvar Dhan</h2>
+      <p class="section-desc">Every Yuvar Dhan formulation is guided by four foundational pillars of authentic health and enduring vitality.</p>
     </div>
 
     <div class="row g-4">
@@ -164,7 +164,7 @@
 
     <div class="section-header">
       <span class="section-tag">Pure Formulations</span>
-      <h2 class="section-title">The Power Veda Range</h2>
+      <h2 class="section-title">The Yuvar Dhan Range</h2>
       <p class="section-desc">Handcrafted formulas engineered for maximum bio-potency, third-party lab tested, and 100% natural.</p>
     </div>
 
@@ -346,14 +346,14 @@
   </div>
 </section>
 
-<!-- 5. About Power Veda Section (White Background with Subtle Gold/Green Accents) -->
+<!-- 5. About Yuvar Dhan Section (White Background with Subtle Gold/Green Accents) -->
 <section class="about-section" id="about">
   <div class="container-custom">
     <div class="row align-items-center g-5">
 
       <div class="col-lg-6">
         <div class="about-visual-wrap">
-          <img src="{{ asset('image/about.jpg') }}" alt="Power Veda Botanical Preparation & Clinical Heritage" class="about-img" loading="lazy">
+          <img src="{{ asset('image/about.jpg') }}" alt="Yuvar Dhan Botanical Preparation & Clinical Heritage" class="about-img" loading="lazy">
           <div class="about-heritage-badge">
             <div class="about-badge-number">2006</div>
             <div class="about-badge-label">Ayurvedic Heritage</div>
@@ -362,13 +362,13 @@
       </div>
 
       <div class="col-lg-6">
-        <span class="section-tag tag-wellness"><i class="bi bi-flower1 me-1"></i> About Power Veda</span>
+        <span class="section-tag tag-wellness"><i class="bi bi-flower1 me-1"></i> About Yuvar Dhan</span>
         <h2 class="section-title text-start mb-3">Traditional Ayurveda. <span class="gold-text">Modern Men’s Wellness.</span></h2>
         <p class="text-muted mb-3" style="font-size: 1rem; line-height: 1.7;">
-          <strong>Power Veda</strong> is a specialized men’s wellness brand committed to supporting modern men with thoughtfully developed Ayurvedic wellness solutions inspired by traditional Indian knowledge and contemporary lifestyle needs.
+          <strong>Yuvar Dhan</strong> is a specialized men’s wellness brand committed to supporting modern men with thoughtfully developed Ayurvedic wellness solutions inspired by traditional Indian knowledge and contemporary lifestyle needs.
         </p>
         <p class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.65;">
-          Power Veda is an <strong>associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since <strong>2006</strong>. This association brings decades of patient care, wellness consultation, and clinical formulation expertise directly to men's health.
+          Yuvar Dhan is an <strong>associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since <strong>2006</strong>. This association brings decades of patient care, wellness consultation, and clinical formulation expertise directly to men's health.
         </p>
 
         <div class="row g-2 mb-4">
@@ -401,7 +401,7 @@
         <div class="p-3 mb-4 rounded-3" style="background: rgba(216, 188, 141, 0.12); border-left: 3px solid var(--gold-color);">
           <p class="small text-muted mb-0">
             <strong class="text-dark"><i class="bi bi-shield-check text-warning me-1"></i> Business Association:</strong>
-            Power Veda operates in association with M.C.D.C.R. Vaidraj Disease Eradication Center. Certain payments, invoices, and operational services may be processed under authorized accounts of M.C.D.C.R. Vaidraj.
+            Yuvar Dhan operates in association with M.C.D.C.R. Vaidraj Disease Eradication Center. Certain payments, invoices, and operational services may be processed under authorized accounts of M.C.D.C.R. Vaidraj.
           </p>
         </div>
 
@@ -426,7 +426,7 @@
     <div class="section-header position-relative">
       <span class="section-tag">Verified Experiences</span>
       <h2 class="section-title">Trusted by Thousands Across the Country</h2>
-      <p class="section-desc">Read genuine experiences from individuals who have integrated Power Veda into their daily wellness journey.</p>
+      <p class="section-desc">Read genuine experiences from individuals who have integrated Yuvar Dhan into their daily wellness journey.</p>
     </div>
 
     @if($reviews->count() > 0)
@@ -602,7 +602,7 @@
 </section>
 
 <!-- 9. Contact Us Section (Deep Navy with Gold Accents) -->
-<section class="contact-section" id="contact" aria-label="Contact Power Veda">
+<section class="contact-section" id="contact" aria-label="Contact Yuvar Dhan">
   <div class="container-custom">
 
     <div class="section-header text-center mb-5">

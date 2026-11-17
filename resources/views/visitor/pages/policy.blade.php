@@ -1,7 +1,7 @@
 @extends('visitor.layouts.app')
 
-@section('title', $page->title . ' | Power Veda - Strength & Vitality')
-@section('meta_description', $page->title . ' - Official policy document of Power Veda and M.C.D.C.R. Vaidraj Disease Eradication Center.')
+@section('title', $page->title . ' | Yuvar Dhan - Strength & Vitality')
+@section('meta_description', $page->title . ' - Official policy document of Yuvar Dhan and M.C.D.C.R. Vaidraj Disease Eradication Center.')
 
 @section('content')
 <!-- Policy Hero Header -->
@@ -16,7 +16,7 @@
       {{ $page->title }}
     </h1>
     <p class="mb-0" style="color: var(--silver-color); max-width: 650px;">
-      Official guidelines and policies of Power Veda, associated with M.C.D.C.R. Vaidraj Disease Eradication Center (serving since 2006).
+      Official guidelines and policies of Yuvar Dhan, associated with M.C.D.C.R. Vaidraj Disease Eradication Center (serving since 2006).
     </p>
   </div>
 </section>

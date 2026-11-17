@@ -13,7 +13,7 @@ use Illuminate\View\View;
 class PageController extends Controller
 {
     /**
-     * Display the Power Veda Storefront Home page with database products, reviews, usage guides and FAQs.
+     * Display the Yuvar Dhan Storefront Home page with database products, reviews, usage guides and FAQs.
      */
     public function home(): View
     {
@@ -134,12 +134,14 @@ class PageController extends Controller
         }
 
         $user = auth()->user();
-        $addresses = $user->addresses()
+        $addresses = $user
+            ->addresses()
             ->orderBy('is_default', 'desc')
             ->orderBy('id', 'desc')
             ->get();
 
-        $orders = $user->orders()
+        $orders = $user
+            ->orders()
             ->with('items')
             ->latest()
             ->get();

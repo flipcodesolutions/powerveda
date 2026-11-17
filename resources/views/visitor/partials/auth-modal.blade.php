@@ -7,7 +7,7 @@
       <div class="auth-modal-header text-center">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div class="d-flex align-items-center">
-            <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo" width="160" height="38">
+            <img src="{{ asset('image/logo.png') }}" alt="Yuvar Dhan Logo" width="160" height="38">
           </div>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -71,7 +71,7 @@
 
               <button type="submit" class="btn btn-primary w-100 py-2 mb-3" id="login-submit-btn">
                 <span class="spinner-border spinner-border-sm me-2 d-none" id="login-spinner"></span>
-                <i class="bi bi-box-arrow-in-right"></i> SIGN IN TO POWER VEDA
+                <i class="bi bi-box-arrow-in-right"></i> SIGN IN TO Yuvar Dhan
               </button>
 
               <div class="auth-divider">
@@ -123,14 +123,14 @@
               <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" id="reg-agree" required checked>
                 <label class="form-check-label small" for="reg-agree" style="color: var(--text-color);">
-                  I agree to Power Veda's <a href="{{ route('terms') }}" class="text-decoration-none fw-bold"
+                  I agree to Yuvar Dhan <a href="{{ route('terms') }}" class="text-decoration-none fw-bold"
                     style="color: var(--secondary-color);">Terms of Service</a> &amp; Natural Wellness Pledge.
                 </label>
               </div>
 
               <button type="submit" class="btn btn-primary w-100 py-2 mb-2" id="register-submit-btn">
                 <span class="spinner-border spinner-border-sm me-2 d-none" id="register-spinner"></span>
-                <i class="bi bi-person-plus-fill"></i> CREATE POWER VEDA ACCOUNT
+                <i class="bi bi-person-plus-fill"></i> CREATE Yuvar Dhan ACCOUNT
               </button>
             </form>
           </div>

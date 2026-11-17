@@ -3,16 +3,16 @@
   <nav class="navbar" id="mainNavbar">
     <div class="container-custom w-100 d-flex align-items-center justify-content-between">
 
-      <!-- Power Veda Logo & Tagline -->
+      <!-- Yuvar Dhan Logo & Tagline -->
       <div class="d-flex align-items-center">
-        <a class="brand-logo" href="{{ route('home') }}" aria-label="Power Veda Home">
-          <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo" width="220" height="50">
+        <a class="brand-logo" href="{{ route('home') }}" aria-label="Yuvar Dhan Home">
+          <img src="{{ asset('image/logo.png') }}" alt="Yuvar Dhan Logo" width="220" height="50">
         </a>
         <div class="brand-tagline-wrap d-none d-sm-flex flex-column ps-3 ms-2 border-start"
           style="border-color: rgba(216, 188, 141, 0.4) !important;">
           <span class="brand-tagline-title"
             style="color: var(--gold-color); font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; line-height: 1.2;">
-            Power Veda's
+           Yuvar Dhan
           </span>
           <span class="brand-tagline-sub"
             style="color: var(--white-color); font-size: 0.84rem; font-weight: 800; letter-spacing: 0.6px; line-height: 1.15;">
@@ -33,7 +33,7 @@
             </li>
           @endif
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}#why-us">Why Power Veda</a>
+            <a class="nav-link" href="{{ route('home') }}#why-us">Why Yuvar Dhan</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About Us</a>

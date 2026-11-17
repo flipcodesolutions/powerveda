@@ -6,7 +6,7 @@
   <div class="mobile-nav-header">
     <div class="d-flex align-items-center">
       <a href="{{ route('home') }}" class="d-inline-block">
-        <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo" height="42">
+        <img src="{{ asset('image/logo.png') }}" alt="Yuvar Dhan Logo" height="42">
       </a>
     </div>
     <button type="button" class="mobile-nav-close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
@@ -54,7 +54,7 @@
       <li class="mobile-nav-item">
         <a class="mobile-nav-link" href="{{ route('home') }}#why-us" data-bs-dismiss="offcanvas">
           <span class="nav-left">
-            <i class="bi bi-shield-check nav-icon"></i> Why Power Veda
+            <i class="bi bi-shield-check nav-icon"></i> Why Yuvar Dhan
           </span>
           <i class="bi bi-chevron-right arrow-icon"></i>
         </a>

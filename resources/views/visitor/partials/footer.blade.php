@@ -6,11 +6,11 @@
       <!-- Brand Col -->
       <div class="col-12 col-md-6 col-lg-4">
         <div class="d-flex align-items-center mb-3">
-          <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo" class="footer-logo mb-0">
+          <img src="{{ asset('image/logo.png') }}" alt="Yuvar Dhan Logo" class="footer-logo mb-0">
           <div class="ps-3 ms-2 border-start" style="border-color: rgba(216, 188, 141, 0.4) !important;">
             <span class="d-block"
               style="color: var(--gold-color); font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; line-height: 1.2;">
-              Power Veda's
+              Yuvar Dhan
             </span>
             <span class="d-block text-white"
               style="font-size: 0.84rem; font-weight: 800; letter-spacing: 0.6px; line-height: 1.15;">
@@ -19,7 +19,7 @@
           </div>
         </div>
         <p class="footer-brand-text">
-          Power Veda is a specialized men’s wellness brand associated with <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong> (serving since 2006), delivering authentic Ayurvedic formulations engineered for vitality, stamina, and balance.
+          Yuvar Dhan is a specialized men’s wellness brand associated with <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong> (serving since 2006), delivering authentic Ayurvedic formulations engineered for vitality, stamina, and balance.
         </p>
         <div class="footer-social-group">
           <a href="https://facebook.com" class="social-icon-btn" target="_blank" rel="noopener noreferrer"
@@ -41,7 +41,7 @@
           @if((isset($products) ? $products->count() : \App\Models\Product::count()) > 1)
             <li><a href="{{ route('home') }}#shop"><i class="bi bi-chevron-right small"></i> Shop</a></li>
           @endif
-          <li><a href="{{ route('home') }}#why-us"><i class="bi bi-chevron-right small"></i> Why Power Veda</a></li>
+          <li><a href="{{ route('home') }}#why-us"><i class="bi bi-chevron-right small"></i> Why Yuvar Dhan</a></li>
           <li><a href="{{ route('about') }}"><i class="bi bi-chevron-right small"></i> About Us</a></li>
           <li><a href="{{ route('home') }}#reviews"><i class="bi bi-chevron-right small"></i> Reviews</a></li>
           <li><a href="{{ route('home') }}#faqs"><i class="bi bi-chevron-right small"></i> FAQs</a></li>
@@ -88,7 +88,7 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom-bar d-flex flex-wrap justify-content-between align-items-center gap-3">
       <div>
-        &copy; {{ date('Y') }} Power Veda &bull; Associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center (Est. 2006). All rights reserved. &bull; 
+        &copy; {{ date('Y') }} Yuvar Dhan &bull; Associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center (Est. 2006). All rights reserved. &bull; 
         <a href="{{ route('admin.dashboard') }}" class="text-decoration-none text-warning fw-bold mx-1"><i class="bi bi-shield-lock"></i> Admin Portal</a>
       </div>
       <div class="d-flex gap-3 fs-5" style="color: var(--silver-color);">

@@ -1,5 +1,5 @@
 /**
- * Power Veda - Admin Console Logic
+ * Yuvar Dhan - Admin Console Logic
  * Dynamic Server-Driven Order Management, Modals & Toast Notifications
  */
 

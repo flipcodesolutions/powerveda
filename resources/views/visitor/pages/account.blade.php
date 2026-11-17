@@ -1,7 +1,7 @@
 @extends('visitor.layouts.app')
 
-@section('title', 'My Account & Orders - Power Veda')
-@section('meta_description', 'Manage your Power Veda orders, tracking status, profile details, and delivery addresses in your personalized wellness account.')
+@section('title', 'My Account & Orders - Yuvar Dhan')
+@section('meta_description', 'Manage your Yuvar Dhan orders, tracking status, profile details, and delivery addresses in your personalized wellness account.')
 
 @section('content')
 <!-- My Account Page Section -->
@@ -240,7 +240,7 @@
                 <div class="py-4">
                   <i class="bi bi-bag-x fs-1 text-muted d-block mb-3"></i>
                   <h4 class="fw-bold text-dark mb-2">No Orders Placed Yet</h4>
-                  <p class="text-muted small mb-4">When you place orders for Power Veda formulations, they will appear here with live tracking &amp; tax invoices.</p>
+                  <p class="text-muted small mb-4">When you place orders for Yuvar Dhan formulations, they will appear here with live tracking &amp; tax invoices.</p>
                   <a href="{{ route('home') }}#shop" class="btn btn-primary">
                     <i class="bi bi-bag-plus-fill me-1"></i> Browse Formulations
                   </a>

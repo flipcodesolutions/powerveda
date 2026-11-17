@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <title>Admin Sign In | Power Veda Console</title>
+  <title>Admin Sign In | Yuvar Dhan Console</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ asset('image/logo.png') }}">
@@ -237,7 +237,7 @@
     <!-- Brand Header -->
     <div class="login-brand">
       <a href="{{ route('home') }}">
-        <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo">
+        <img src="{{ asset('image/logo.png') }}" alt="Yuvar Dhan Logo">
       </a>
       <h1>Admin Console</h1>
       <p>Authorized Personnel Only</p>

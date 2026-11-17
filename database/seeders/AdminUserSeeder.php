@@ -16,7 +16,7 @@ class AdminUserSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@powerveda.com'],
             [
-                'name' => 'Power Veda Admin',
+                'name' => 'Yuvar Dhan Admin',
                 'password' => 'Admin@12345',
                 'contactNo' => '+91 9876543210',
                 'role' => 'Admin',

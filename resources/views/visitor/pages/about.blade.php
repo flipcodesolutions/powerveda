@@ -1,8 +1,8 @@
 @extends('visitor.layouts.app')
 
-@section('title', 'About Us | Power Veda - Traditional Ayurveda. Modern Men\'s Wellness.')
-@section('meta_description', 'Power Veda is a specialized men\'s wellness brand associated with M.C.D.C.R. Vaidraj Disease Eradication Center (serving since 2006), delivering authentic Ayurvedic wellness solutions.')
-@section('meta_keywords', 'Power Veda, About Power Veda, M.C.D.C.R. Vaidraj Disease Eradication Center, Ayurvedic men\'s wellness, vitality, stamina, authentic Ayurveda, Vaidraj')
+@section('title', 'About Us | Yuvar Dhan - Traditional Ayurveda. Modern Men\'s Wellness.')
+@section('meta_description', 'Yuvar Dhan is a specialized men\'s wellness brand associated with M.C.D.C.R. Vaidraj Disease Eradication Center (serving since 2006), delivering authentic Ayurvedic wellness solutions.')
+@section('meta_keywords', 'Yuvar Dhan, About Yuvar Dhan, M.C.D.C.R. Vaidraj Disease Eradication Center, Ayurvedic men\'s wellness, vitality, stamina, authentic Ayurveda, Vaidraj')
 
 @section('content')
 <!-- About Hero Section -->
@@ -17,7 +17,7 @@
       <i class="bi bi-patch-check-fill me-1"></i> Healthcare Heritage Since 2006
     </div>
     <h1 class="display-5 fw-bold text-white mb-2" style="font-family: var(--font-heading);">
-      About <span style="color: var(--gold-color);">Power Veda</span>
+      About <span style="color: var(--gold-color);">Yuvar Dhan</span>
     </h1>
     <p class="mb-0" style="color: var(--silver-color); max-width: 700px; font-size: 1.1rem; line-height: 1.6;">
       <strong>Traditional Ayurveda. Modern Men’s Wellness.</strong> Formulations thoughtfully engineered to support modern men through time-tested Vedic wisdom and healthcare experience.
@@ -42,15 +42,15 @@
                 Ayurvedic Excellence Designed for the Modern Man
               </h2>
               <p class="policy-text mb-3" style="font-size: 1.02rem;">
-                <strong>Power Veda</strong> is a specialized men’s wellness brand committed to supporting modern men with thoughtfully developed Ayurvedic wellness solutions inspired by traditional Indian knowledge and contemporary lifestyle needs.
+                <strong>Yuvar Dhan</strong> is a specialized men’s wellness brand committed to supporting modern men with thoughtfully developed Ayurvedic wellness solutions inspired by traditional Indian knowledge and contemporary lifestyle needs.
               </p>
               <p class="policy-text mb-0">
-                Power Veda is an <strong>associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since 2006. With years of experience in Ayurvedic healthcare, wellness consultation and product development, M.C.D.C.R. Vaidraj provides the healthcare experience and organizational foundation behind the Power Veda brand.
+                Yuvar Dhan is an <strong>associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since 2006. With years of experience in Ayurvedic healthcare, wellness consultation and product development, M.C.D.C.R. Vaidraj provides the healthcare experience and organizational foundation behind the Yuvar Dhan brand.
               </p>
             </div>
             <div class="col-lg-5">
               <div class="about-visual-wrap">
-                <img src="{{ asset('image/about.jpg') }}" alt="Power Veda Botanical Heritage" class="about-img" style="height: 320px; width: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                <img src="{{ asset('image/about.jpg') }}" alt="Yuvar Dhan Botanical Heritage" class="about-img" style="height: 320px; width: 100%; object-fit: cover; border-radius: var(--radius-md);">
                 <div class="about-heritage-badge" style="bottom: -15px; right: 10px; padding: 0.9rem 1.25rem;">
                   <div class="about-badge-number" style="font-size: 1.7rem;">2006</div>
                   <div class="about-badge-label" style="font-size: 0.7rem;">Est. Clinical Heritage</div>
@@ -75,20 +75,20 @@
           <div class="p-3 mb-3 rounded-3" style="background: rgba(216, 188, 141, 0.15); border-left: 4px solid var(--gold-color);">
             <p class="mb-0 fw-semibold" style="color: var(--heading-color); font-size: 1.05rem;">
               <i class="bi bi-patch-check-fill text-warning me-2"></i>
-              M.C.D.C.R. Vaidraj Disease Eradication Center is the parent/associated healthcare organization behind Power Veda.
+              M.C.D.C.R. Vaidraj Disease Eradication Center is the parent/associated healthcare organization behind Yuvar Dhan.
             </p>
           </div>
 
           <p class="policy-text">
-            Power Veda operates with the support and experience of <strong>M.C.D.C.R. Vaidraj</strong> in areas including Ayurvedic wellness knowledge, product development, healthcare guidance, quality-focused processes, customer support and business operations.
+            Yuvar Dhan operates with the support and experience of <strong>M.C.D.C.R. Vaidraj</strong> in areas including Ayurvedic wellness knowledge, product development, healthcare guidance, quality-focused processes, customer support and business operations.
           </p>
 
           <p class="policy-text">
-            Accordingly, certain operational services of Power Veda, including <strong>banking, payment processing, billing, customer support, logistics or other commercial activities, may be managed through M.C.D.C.R. Vaidraj Disease Eradication Center and its authorized business accounts</strong>, wherever applicable.
+            Accordingly, certain operational services of Yuvar Dhan, including <strong>banking, payment processing, billing, customer support, logistics or other commercial activities, may be managed through M.C.D.C.R. Vaidraj Disease Eradication Center and its authorized business accounts</strong>, wherever applicable.
           </p>
 
           <p class="policy-text mb-0">
-            This association allows Power Veda to provide customers with the reliability and operational experience of an established Ayurvedic healthcare organization while maintaining a dedicated focus on men’s wellness.
+            This association allows Yuvar Dhan to provide customers with the reliability and operational experience of an established Ayurvedic healthcare organization while maintaining a dedicated focus on men’s wellness.
           </p>
         </div>
 
@@ -105,7 +105,7 @@
           </div>
 
           <p class="policy-text mb-4">
-            Modern lifestyles can affect men’s energy, stamina, confidence, stress levels and overall wellbeing. Power Veda was created to provide men with convenient, Ayurveda-inspired wellness solutions designed to become part of a healthier daily routine.
+            Modern lifestyles can affect men’s energy, stamina, confidence, stress levels and overall wellbeing. Yuvar Dhan was created to provide men with convenient, Ayurveda-inspired wellness solutions designed to become part of a healthier daily routine.
           </p>
 
           <h5 class="fw-bold mb-3" style="color: var(--heading-color); font-size: 1.05rem;">Our Core Focus Areas:</h5>
@@ -187,7 +187,7 @@
                 </div>
               </div>
               <p class="policy-text mb-3">
-                At Power Veda, we believe men’s wellness should be <strong>approached responsibly</strong>. Our products are developed with a focus on carefully selected ingredients, quality standards and practical usage for modern lifestyles.
+                At Yuvar Dhan, we believe men’s wellness should be <strong>approached responsibly</strong>. Our products are developed with a focus on carefully selected ingredients, quality standards and practical usage for modern lifestyles.
               </p>
               <p class="policy-text mb-0">
                 We do not believe in unrealistic promises or overnight solutions. Our goal is to build a trusted men’s wellness brand backed by the experience and heritage of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>.
@@ -205,11 +205,11 @@
                 </div>
               </div>
               <p class="policy-text mb-3">
-                Through our association with M.C.D.C.R. Vaidraj Disease Eradication Center, Power Veda benefits from an Ayurvedic healthcare ecosystem established in <strong>2006</strong>, with experience in patient care, wellness consultation and Ayurvedic products.
+                Through our association with M.C.D.C.R. Vaidraj Disease Eradication Center, Yuvar Dhan benefits from an Ayurvedic healthcare ecosystem established in <strong>2006</strong>, with experience in patient care, wellness consultation and Ayurvedic products.
               </p>
               <div class="p-3 rounded-3" style="background: var(--body-bg); border: 1px dashed rgba(6, 30, 67, 0.2);">
                 <strong style="color: var(--primary-color); font-size: 0.95rem;" class="d-block mb-1">
-                  <i class="bi bi-stars text-warning me-1"></i> Power Veda Promise
+                  <i class="bi bi-stars text-warning me-1"></i> Yuvar Dhan Promise
                 </strong>
                 <span class="fw-bold" style="color: var(--heading-color); font-size: 1.05rem;">Traditional Ayurveda. Modern Men’s Wellness.</span>
               </div>
@@ -228,7 +228,7 @@
                 Official Business Association &amp; Commercial Disclosure
               </h4>
               <p class="policy-text mb-0" style="font-size: 0.95rem; line-height: 1.65;">
-                <strong>Power Veda is an associated men’s wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center.</strong> Certain payments, invoices, banking transactions and operational services may therefore be processed under the authorized business name and banking details of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, wherever applicable.
+                <strong>Yuvar Dhan is an associated men’s wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center.</strong> Certain payments, invoices, banking transactions and operational services may therefore be processed under the authorized business name and banking details of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, wherever applicable.
               </p>
             </div>
           </div>
@@ -239,7 +239,7 @@
           <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">
             <i class="bi bi-shield-check me-1"></i> 100% PURE &bull; LAB TESTED &bull; AYUSH COMPLIANT
           </span>
-          <h2 class="display-6 fw-bold mb-3" style="font-family: var(--font-heading);">Experience the Power of Vedic Formulation</h2>
+          <h2 class="display-6 fw-bold mb-3 text-white" style="font-family: var(--font-heading);">Experience the Power of Vedic Formulation</h2>
           <p class="mb-4 mx-auto" style="max-width: 620px; color: var(--silver-color); font-size: 1.05rem;">
             Explore our thoughtfully developed Ayurvedic solutions crafted to elevate energy, stamina, and overall vitality naturally.
           </p>

@@ -57,13 +57,13 @@ class CartController extends Controller
         }
 
         $validated = $request->validate([
-            'product_id'   => ['nullable', 'integer'],
-            'id'           => ['nullable', 'integer'],
-            'qty'          => ['nullable', 'integer', 'min:1'],
-            'name'         => ['nullable', 'string'],
+            'product_id' => ['nullable', 'integer'],
+            'id' => ['nullable', 'integer'],
+            'qty' => ['nullable', 'integer', 'min:1'],
+            'name' => ['nullable', 'string'],
             'product_name' => ['nullable', 'string'],
-            'price'        => ['nullable', 'numeric'],
-            'image'        => ['nullable', 'string'],
+            'price' => ['nullable', 'numeric'],
+            'image' => ['nullable', 'string'],
         ]);
 
         $productId = $validated['product_id'] ?? $validated['id'] ?? null;
@@ -82,12 +82,13 @@ class CartController extends Controller
             }
         }
 
-        $name = $name ?: 'Power Veda Wellness Formulation';
+        $name = $name ?: 'Yuvar Dhan Wellness Formulation';
 
         $user = auth()->user();
 
         // Check if item already exists in user's cart
-        $existing = $user->cartItems()
+        $existing = $user
+            ->cartItems()
             ->where(function ($query) use ($productId, $name) {
                 if ($productId) {
                     $query->where('product_id', $productId);
@@ -101,11 +102,11 @@ class CartController extends Controller
             $existing->increment('qty', $qty);
         } else {
             $user->cartItems()->create([
-                'product_id'   => $productId,
+                'product_id' => $productId,
                 'product_name' => $name,
-                'price'        => $price,
-                'image'        => $image,
-                'qty'          => $qty,
+                'price' => $price,
+                'image' => $image,
+                'qty' => $qty,
             ]);
         }
 
@@ -131,17 +132,19 @@ class CartController extends Controller
 
         $validated = $request->validate([
             'product_id' => ['nullable', 'integer'],
-            'id'         => ['nullable', 'integer'],
-            'qty'        => ['required', 'integer'],
+            'id' => ['nullable', 'integer'],
+            'qty' => ['required', 'integer'],
         ]);
 
         $productId = $validated['product_id'] ?? $validated['id'] ?? null;
         $qty = $validated['qty'];
         $user = auth()->user();
 
-        $item = $user->cartItems()
+        $item = $user
+            ->cartItems()
             ->where(function ($query) use ($productId) {
-                $query->where('product_id', $productId)
+                $query
+                    ->where('product_id', $productId)
                     ->orWhere('id', $productId);
             })
             ->first();
@@ -175,15 +178,17 @@ class CartController extends Controller
 
         $validated = $request->validate([
             'product_id' => ['nullable', 'integer'],
-            'id'         => ['nullable', 'integer'],
+            'id' => ['nullable', 'integer'],
         ]);
 
         $productId = $validated['product_id'] ?? $validated['id'] ?? null;
         $user = auth()->user();
 
-        $user->cartItems()
+        $user
+            ->cartItems()
             ->where(function ($query) use ($productId) {
-                $query->where('product_id', $productId)
+                $query
+                    ->where('product_id', $productId)
                     ->orWhere('id', $productId);
             })
             ->delete();
@@ -255,7 +260,7 @@ class CartController extends Controller
         foreach ($guestItems as $item) {
             $productId = $item['id'] ?? $item['product_id'] ?? null;
             $qty = max(1, (int) ($item['qty'] ?? 1));
-            $name = $item['name'] ?? $item['product_name'] ?? 'Power Veda Formulation';
+            $name = $item['name'] ?? $item['product_name'] ?? 'Yuvar Dhan Formulation';
             $price = (float) ($item['price'] ?? 0);
             $image = $item['image'] ?? null;
 
@@ -268,7 +273,8 @@ class CartController extends Controller
                 }
             }
 
-            $existing = $user->cartItems()
+            $existing = $user
+                ->cartItems()
                 ->where(function ($query) use ($productId, $name) {
                     if ($productId) {
                         $query->where('product_id', $productId);
@@ -283,11 +289,11 @@ class CartController extends Controller
                 $existing->increment('qty', $qty);
             } else {
                 $user->cartItems()->create([
-                    'product_id'   => $productId,
+                    'product_id' => $productId,
                     'product_name' => $name,
-                    'price'        => $price,
-                    'image'        => $image,
-                    'qty'          => $qty,
+                    'price' => $price,
+                    'image' => $image,
+                    'qty' => $qty,
                 ]);
             }
         }
@@ -298,17 +304,18 @@ class CartController extends Controller
      */
     protected function getUserCartFormatted($user): array
     {
-        return $user->cartItems()
+        return $user
+            ->cartItems()
             ->latest()
             ->get()
             ->map(function ($item) {
                 return [
-                    'id'    => $item->product_id ?: $item->id,
+                    'id' => $item->product_id ?: $item->id,
                     'db_id' => $item->id,
-                    'name'  => $item->product_name,
+                    'name' => $item->product_name,
                     'price' => (float) $item->price,
                     'image' => $item->image ?: asset('image/products/product-1.jpg'),
-                    'qty'   => (int) $item->qty,
+                    'qty' => (int) $item->qty,
                 ];
             })
             ->toArray();

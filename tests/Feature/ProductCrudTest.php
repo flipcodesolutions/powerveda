@@ -28,7 +28,7 @@ class ProductCrudTest extends TestCase
     {
         Product::create([
             'name' => 'Test Ashwagandha Tonic',
-            'price' => 1299.00,
+            'price' => 1299.0,
             'stock' => 50,
             'detail' => 'Test formulation detail',
             'meta_title' => 'Test SEO Title',
@@ -62,12 +62,12 @@ class ProductCrudTest extends TestCase
         $ogImageFile = UploadedFile::fake()->image('ashwagandha_og.jpg', 1200, 630);
 
         $payload = [
-            'name' => 'Power Veda Shilajit Gold Resin',
-            'price' => 2499.00,
+            'name' => 'Yuvar Dhan Shilajit Gold Resin',
+            'price' => 2499.0,
             'stock' => 30,
             'photo' => $photoFile,
             'detail' => 'Pure Himalayan mountain-harvested Shilajit resin with 84+ ionic minerals.',
-            'meta_title' => 'Buy Authentic Shilajit Gold Resin | Power Veda',
+            'meta_title' => 'Buy Authentic Shilajit Gold Resin | Yuvar Dhan',
             'meta_detail' => 'Pure Himalayan Shilajit resin for peak stamina.',
             'og_image' => $ogImageFile,
         ];
@@ -78,7 +78,7 @@ class ProductCrudTest extends TestCase
         $response->assertRedirect(route('admin.products.index'));
         $response->assertSessionHas('success', 'Product created successfully with usage steps & FAQs!');
 
-        $product = Product::where('name', 'Power Veda Shilajit Gold Resin')->first();
+        $product = Product::where('name', 'Yuvar Dhan Shilajit Gold Resin')->first();
         $this->assertNotNull($product);
         $this->assertNotNull($product->photo);
         $this->assertNotNull($product->og_image);
@@ -98,25 +98,25 @@ class ProductCrudTest extends TestCase
         $photoFile = UploadedFile::fake()->image('neem_wash.jpg', 600, 600);
 
         $payload = [
-            'name'        => 'Power Veda Neem Cleanser',
-            'price'       => 699.00,
-            'stock'       => 50,
-            'photo'       => $photoFile,
-            'detail'      => 'Organic clarifying wash with active neem and tulsi extract.',
-            'meta_title'  => '', // Left empty
-            'meta_detail' => '', // Left empty
-            'og_image'    => null, // Left empty
+            'name' => 'Yuvar Dhan Neem Cleanser',
+            'price' => 699.0,
+            'stock' => 50,
+            'photo' => $photoFile,
+            'detail' => 'Organic clarifying wash with active neem and tulsi extract.',
+            'meta_title' => '',  // Left empty
+            'meta_detail' => '',  // Left empty
+            'og_image' => null,  // Left empty
         ];
 
         $response = $this->post('/admin/products', $payload);
 
         $response->assertRedirect(route('admin.products.index'));
 
-        $product = Product::where('name', 'Power Veda Neem Cleanser')->first();
+        $product = Product::where('name', 'Yuvar Dhan Neem Cleanser')->first();
         $this->assertNotNull($product);
 
         // Verify meta_title was auto-filled from name
-        $this->assertEquals('Power Veda Neem Cleanser', $product->meta_title);
+        $this->assertEquals('Yuvar Dhan Neem Cleanser', $product->meta_title);
 
         // Verify meta_detail was auto-filled from detail
         $this->assertEquals('Organic clarifying wash with active neem and tulsi extract.', $product->meta_detail);
@@ -132,7 +132,7 @@ class ProductCrudTest extends TestCase
     {
         $product = Product::create([
             'name' => 'Brahmi Brain Booster',
-            'price' => 899.00,
+            'price' => 899.0,
             'stock' => 40,
             'detail' => 'Formulation for focus',
             'meta_title' => 'Brahmi Brain Focus',
@@ -155,7 +155,7 @@ class ProductCrudTest extends TestCase
         $initialPhoto = UploadedFile::fake()->image('old_photo.jpg');
         $product = Product::create([
             'name' => 'Old Product Name',
-            'price' => 500.00,
+            'price' => 500.0,
             'stock' => 10,
             'photo' => $initialPhoto->store('products/photos', 'public'),
             'detail' => 'Old detail',
@@ -168,7 +168,7 @@ class ProductCrudTest extends TestCase
 
         $response = $this->put(route('admin.products.update', $product), [
             'name' => 'Updated Product Name',
-            'price' => 799.00,
+            'price' => 799.0,
             'stock' => 25,
             'detail' => 'Updated detail',
             'meta_title' => 'Updated Meta Title',
@@ -204,7 +204,7 @@ class ProductCrudTest extends TestCase
 
         $product = Product::create([
             'name' => 'Product to Delete',
-            'price' => 399.00,
+            'price' => 399.0,
             'stock' => 5,
             'photo' => $photoPath,
             'og_image' => $ogPath,
@@ -225,9 +225,9 @@ class ProductCrudTest extends TestCase
     public function test_product_validation(): void
     {
         $response = $this->post('/admin/products', [
-            'name' => '', // Required
-            'price' => -10, // Must be >= 0
-            'stock' => -5, // Must be >= 0
+            'name' => '',  // Required
+            'price' => -10,  // Must be >= 0
+            'stock' => -5,  // Must be >= 0
         ]);
 
         $response->assertSessionHasErrors(['name', 'price', 'stock']);

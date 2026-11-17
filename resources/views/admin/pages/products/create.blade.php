@@ -44,7 +44,7 @@
           <!-- Product Name -->
           <div class="col-md-7">
             <label class="form-label fw-bold small" for="name">Product Name <span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="e.g. Power Veda Ashwagandha Gold KSM-66" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="e.g. Yuvar Dhan Ashwagandha Gold KSM-66" required>
             @error('name')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror

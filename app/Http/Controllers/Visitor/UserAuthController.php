@@ -19,18 +19,18 @@ class UserAuthController extends Controller
     public function register(Request $request): JsonResponse|RedirectResponse
     {
         $validator = Validator::make($request->all(), [
-            'name'      => ['required', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'contactNo' => ['required', 'string', 'max:20'],
-            'password'  => ['required', 'string', 'min:6'],
+            'password' => ['required', 'string', 'min:6'],
         ], [
-            'name.required'      => 'Please enter your full name.',
-            'email.required'     => 'An email address is required.',
-            'email.email'        => 'Please provide a valid email address.',
-            'email.unique'       => 'An account with this email address already exists.',
+            'name.required' => 'Please enter your full name.',
+            'email.required' => 'An email address is required.',
+            'email.email' => 'Please provide a valid email address.',
+            'email.unique' => 'An account with this email address already exists.',
             'contactNo.required' => 'Please enter your contact phone number.',
-            'password.required'  => 'Please enter a secure password.',
-            'password.min'       => 'Password must be at least 6 characters.',
+            'password.required' => 'Please enter a secure password.',
+            'password.min' => 'Password must be at least 6 characters.',
         ]);
 
         if ($validator->fails()) {
@@ -38,7 +38,7 @@ class UserAuthController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => $validator->errors()->first(),
-                    'errors'  => $validator->errors(),
+                    'errors' => $validator->errors(),
                 ], 422);
             }
 
@@ -47,11 +47,11 @@ class UserAuthController extends Controller
 
         // Create new customer user (role defaults to 'User')
         $user = User::create([
-            'name'      => $request->name,
-            'email'     => $request->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'contactNo' => $request->contactNo,
-            'password'  => $request->password,
-            'role'      => 'User',
+            'password' => $request->password,
+            'role' => 'User',
         ]);
 
         // Auto-login the newly registered user
@@ -67,34 +67,35 @@ class UserAuthController extends Controller
         }
 
         $userData = [
-            'id'        => $user->id,
-            'name'      => $user->name,
-            'email'     => $user->email,
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
             'contactNo' => $user->contactNo,
-            'role'      => $user->role,
-            'is_admin'  => $user->isAdmin(),
+            'role' => $user->role,
+            'is_admin' => $user->isAdmin(),
         ];
 
         $userCart = $user->cartItems()->latest()->get()->map(fn($item) => [
-            'id'    => $item->product_id ?: $item->id,
+            'id' => $item->product_id ?: $item->id,
             'db_id' => $item->id,
-            'name'  => $item->product_name,
+            'name' => $item->product_name,
             'price' => (float) $item->price,
             'image' => $item->image ?: asset('image/products/product-1.jpg'),
-            'qty'   => (int) $item->qty,
+            'qty' => (int) $item->qty,
         ])->toArray();
 
         if ($request->expectsJson() || $request->ajax()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Welcome to Power Veda, ' . $user->name . '! Your account is now active.',
-                'user'    => $userData,
-                'cart'    => $userCart,
+                'message' => 'Welcome to Yuvar Dhan, ' . $user->name . '! Your account is now active.',
+                'user' => $userData,
+                'cart' => $userCart,
             ], 201);
         }
 
-        return redirect()->intended(route('home'))
-            ->with('success', 'Welcome to Power Veda, ' . $user->name . '! Your account is now active.');
+        return redirect()
+            ->intended(route('home'))
+            ->with('success', 'Welcome to Yuvar Dhan, ' . $user->name . '! Your account is now active.');
     }
 
     /**
@@ -105,13 +106,13 @@ class UserAuthController extends Controller
         $loginInput = $request->input('login', $request->input('email', ''));
 
         $validator = Validator::make([
-            'login'    => $loginInput,
+            'login' => $loginInput,
             'password' => $request->password,
         ], [
-            'login'    => ['required', 'string'],
+            'login' => ['required', 'string'],
             'password' => ['required', 'string'],
         ], [
-            'login.required'    => 'Please enter your registered email address or contact number.',
+            'login.required' => 'Please enter your registered email address or contact number.',
             'password.required' => 'Please enter your password.',
         ]);
 
@@ -120,7 +121,7 @@ class UserAuthController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => $validator->errors()->first(),
-                    'errors'  => $validator->errors(),
+                    'errors' => $validator->errors(),
                 ], 422);
             }
 
@@ -130,7 +131,7 @@ class UserAuthController extends Controller
         $fieldType = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'contactNo';
         $credentials = [
             $fieldType => $loginInput,
-            'password'  => $request->password,
+            'password' => $request->password,
         ];
 
         $remember = $request->boolean('remember');
@@ -149,33 +150,34 @@ class UserAuthController extends Controller
             }
 
             $userData = [
-                'id'        => $user->id,
-                'name'      => $user->name,
-                'email'     => $user->email,
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'contactNo' => $user->contactNo,
-                'role'      => $user->role,
-                'is_admin'  => $user->isAdmin(),
+                'role' => $user->role,
+                'is_admin' => $user->isAdmin(),
             ];
 
             $userCart = $user->cartItems()->latest()->get()->map(fn($item) => [
-                'id'    => $item->product_id ?: $item->id,
+                'id' => $item->product_id ?: $item->id,
                 'db_id' => $item->id,
-                'name'  => $item->product_name,
+                'name' => $item->product_name,
                 'price' => (float) $item->price,
                 'image' => $item->image ?: asset('image/products/product-1.jpg'),
-                'qty'   => (int) $item->qty,
+                'qty' => (int) $item->qty,
             ])->toArray();
 
             if ($request->expectsJson() || $request->ajax()) {
                 return response()->json([
                     'success' => true,
                     'message' => 'Welcome back, ' . $user->name . '!',
-                    'user'    => $userData,
-                    'cart'    => $userCart,
+                    'user' => $userData,
+                    'cart' => $userCart,
                 ]);
             }
 
-            return redirect()->intended(route('home'))
+            return redirect()
+                ->intended(route('home'))
                 ->with('success', 'Welcome back, ' . $user->name . '!');
         }
 
@@ -186,7 +188,7 @@ class UserAuthController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => $errorMessage,
-                'errors'  => [
+                'errors' => [
                     'login' => [$errorMessage],
                 ],
             ], 422);
@@ -216,7 +218,8 @@ class UserAuthController extends Controller
             ]);
         }
 
-        return redirect()->route('home')
+        return redirect()
+            ->route('home')
             ->with('success', 'You have been signed out successfully.');
     }
 
@@ -228,31 +231,31 @@ class UserAuthController extends Controller
         if (!Auth::check()) {
             return response()->json([
                 'authenticated' => false,
-                'user'          => null,
+                'user' => null,
             ]);
         }
 
         $user = Auth::user();
         $userCart = $user->cartItems()->latest()->get()->map(fn($item) => [
-            'id'    => $item->product_id ?: $item->id,
+            'id' => $item->product_id ?: $item->id,
             'db_id' => $item->id,
-            'name'  => $item->product_name,
+            'name' => $item->product_name,
             'price' => (float) $item->price,
             'image' => $item->image ?: asset('image/products/product-1.jpg'),
-            'qty'   => (int) $item->qty,
+            'qty' => (int) $item->qty,
         ])->toArray();
 
         return response()->json([
             'authenticated' => true,
-            'user'          => [
-                'id'        => $user->id,
-                'name'      => $user->name,
-                'email'     => $user->email,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'contactNo' => $user->contactNo,
-                'role'      => $user->role,
-                'is_admin'  => $user->isAdmin(),
+                'role' => $user->role,
+                'is_admin' => $user->isAdmin(),
             ],
-            'cart'          => $userCart,
+            'cart' => $userCart,
         ]);
     }
 
@@ -274,10 +277,10 @@ class UserAuthController extends Controller
         $user = Auth::user();
 
         $validator = Validator::make($request->all(), [
-            'name'      => ['required', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
             'contactNo' => ['required', 'string', 'max:20'],
-            'password'  => ['nullable', 'string', 'min:6'],
+            'password' => ['nullable', 'string', 'min:6'],
         ]);
 
         if ($validator->fails()) {
@@ -285,15 +288,15 @@ class UserAuthController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => 'Validation error',
-                    'errors'  => $validator->errors(),
+                    'errors' => $validator->errors(),
                 ], 422);
             }
             return back()->withErrors($validator)->withInput();
         }
 
         $userData = [
-            'name'      => $request->name,
-            'email'     => $request->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'contactNo' => $request->contactNo,
         ];
 
@@ -307,13 +310,13 @@ class UserAuthController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Your profile has been updated successfully!',
-                'user'    => [
-                    'id'        => $user->id,
-                    'name'      => $user->name,
-                    'email'     => $user->email,
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
                     'contactNo' => $user->contactNo,
-                    'role'      => $user->role,
-                    'is_admin'  => $user->isAdmin(),
+                    'role' => $user->role,
+                    'is_admin' => $user->isAdmin(),
                 ],
             ]);
         }

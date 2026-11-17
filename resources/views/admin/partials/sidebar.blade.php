@@ -2,7 +2,7 @@
 <aside class="admin-sidebar">
   <div class="admin-sidebar-brand">
     <a href="{{ route('admin.dashboard') }}" class="text-decoration-none d-flex align-items-center">
-      <img src="{{ asset('image/logo.png') }}" alt="Power Veda Logo">
+      <img src="{{ asset('image/logo.png') }}" alt="Yuvar Dhan Logo">
       <div class="d-flex flex-column ps-2 border-start border-secondary">
         <span style="color: var(--gold-color, #D8BC8D); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Admin Console</span>
         <span style="color: #ffffff; font-size: 0.8rem; font-weight: 700;">HQ Management</span>

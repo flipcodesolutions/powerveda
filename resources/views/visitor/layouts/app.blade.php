@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title', 'Power Veda - Premium Wellness, Strength & Vitality')</title>
-  <meta name="description" content="@yield('meta_description', 'Discover Power Veda: Premium wellness formulations designed to support strength, vitality, and a healthier lifestyle. 100% natural, pure, and trustworthy.')">
-  <meta name="keywords" content="@yield('meta_keywords', 'Power Veda, wellness, strength, vitality, natural, Ayurvedic, health supplements, pure formulations')">
+  <title>@yield('title', 'Yuvar Dhan - Premium Wellness, Strength & Vitality')</title>
+  <meta name="description" content="@yield('meta_description', 'Discover Yuvar Dhan: Premium wellness formulations designed to support strength, vitality, and a healthier lifestyle. 100% natural, pure, and trustworthy.')">
+  <meta name="keywords" content="@yield('meta_keywords', 'Yuvar Dhan, wellness, strength, vitality, natural, Ayurvedic, health supplements, pure formulations')">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 

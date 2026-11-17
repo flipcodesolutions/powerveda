@@ -337,11 +337,11 @@
     
     const emailEl = document.getElementById('modal-email');
     emailEl.innerText = contact.email || '--';
-    emailEl.href = `mailto:${contact.email}?subject=Re: ${encodeURIComponent(contact.subject || 'Power Veda Inquiry')}`;
+    emailEl.href = `mailto:${contact.email}?subject=Re: ${encodeURIComponent(contact.subject || 'Yuvar Dhan Inquiry')}`;
     
     const emailBtn = document.getElementById('modal-email-btn');
     if (emailBtn) {
-      emailBtn.href = `mailto:${contact.email}?subject=Re: ${encodeURIComponent(contact.subject || 'Power Veda Inquiry')}`;
+      emailBtn.href = `mailto:${contact.email}?subject=Re: ${encodeURIComponent(contact.subject || 'Yuvar Dhan Inquiry')}`;
     }
 
     const phoneEl = document.getElementById('modal-phone');

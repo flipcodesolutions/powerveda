@@ -23,8 +23,8 @@ class OrderTest extends TestCase
     protected function createProduct(array $attributes = []): Product
     {
         return Product::create(array_merge([
-            'name' => 'Power Veda Formulation',
-            'price' => 1299.00,
+            'name' => 'Yuvar Dhan Formulation',
+            'price' => 1299.0,
             'stock' => 50,
             'detail' => 'Premium herbal wellness formulation.',
             'meta_title' => 'Herbal Product',
@@ -42,7 +42,8 @@ class OrderTest extends TestCase
             ],
         ]);
 
-        $response->assertStatus(401)
+        $response
+            ->assertStatus(401)
             ->assertJson([
                 'success' => false,
                 'message' => 'Please log in to place your order.',
@@ -80,7 +81,8 @@ class OrderTest extends TestCase
             'payment_method' => 'Cash on Delivery',
         ]);
 
-        $response->assertStatus(201)
+        $response
+            ->assertStatus(201)
             ->assertJson([
                 'success' => true,
             ]);
@@ -130,7 +132,8 @@ class OrderTest extends TestCase
             'payment_method' => 'Prepaid UPI',
         ]);
 
-        $response->assertStatus(201)
+        $response
+            ->assertStatus(201)
             ->assertJson([
                 'success' => true,
             ]);
@@ -164,28 +167,30 @@ class OrderTest extends TestCase
             'city' => 'Delhi',
             'state' => 'Delhi',
             'pincode' => '110001',
-            'subtotal' => 1499.00,
-            'shipping_fee' => 0.00,
-            'total_amount' => 1499.00,
+            'subtotal' => 1499.0,
+            'shipping_fee' => 0.0,
+            'total_amount' => 1499.0,
             'status' => 'Processing',
         ]);
 
         OrderItem::create([
             'order_id' => $order->id,
             'product_name' => 'Ashwagandha Gold',
-            'price' => 1499.00,
+            'price' => 1499.0,
             'qty' => 1,
         ]);
 
         // 1. Account page renders order
         $pageResponse = $this->actingAs($user)->get(route('account'));
-        $pageResponse->assertStatus(200)
+        $pageResponse
+            ->assertStatus(200)
             ->assertSee('#PV-2026-TEST1')
             ->assertSee('Ashwagandha Gold');
 
         // 2. API returns order
         $apiResponse = $this->actingAs($user)->getJson(route('user.orders.list'));
-        $apiResponse->assertStatus(200)
+        $apiResponse
+            ->assertStatus(200)
             ->assertJson([
                 'success' => true,
             ])
@@ -208,15 +213,16 @@ class OrderTest extends TestCase
             'city' => 'Pune',
             'state' => 'Maharashtra',
             'pincode' => '411001',
-            'subtotal' => 2499.00,
-            'shipping_fee' => 0.00,
-            'total_amount' => 2499.00,
+            'subtotal' => 2499.0,
+            'shipping_fee' => 0.0,
+            'total_amount' => 2499.0,
             'status' => 'Processing',
         ]);
 
         // Admin can view orders
         $response = $this->actingAs($admin)->get(route('admin.orders'));
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertSee('PV-2026-ADM1')
             ->assertSee('Rohan Varma');
 
@@ -225,7 +231,8 @@ class OrderTest extends TestCase
             'status' => 'In Transit',
         ]);
 
-        $updateResponse->assertStatus(200)
+        $updateResponse
+            ->assertStatus(200)
             ->assertJson([
                 'success' => true,
             ]);
@@ -250,21 +257,22 @@ class OrderTest extends TestCase
             'city' => 'Mumbai',
             'state' => 'Maharashtra',
             'pincode' => '400020',
-            'subtotal' => 1999.00,
-            'shipping_fee' => 0.00,
-            'total_amount' => 1999.00,
+            'subtotal' => 1999.0,
+            'shipping_fee' => 0.0,
+            'total_amount' => 1999.0,
             'status' => 'Processing',
         ]);
 
         $item = OrderItem::create([
             'order_id' => $order->id,
             'product_name' => 'Himalayan Detox Elixir',
-            'price' => 1999.00,
+            'price' => 1999.0,
             'qty' => 1,
         ]);
 
         $response = $this->actingAs($admin)->getJson(route('admin.orders.show', $order));
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJson([
                 'success' => true,
                 'order' => [
@@ -288,9 +296,9 @@ class OrderTest extends TestCase
             'city' => 'Delhi',
             'state' => 'Delhi',
             'pincode' => '110001',
-            'subtotal' => 500.00,
-            'shipping_fee' => 0.00,
-            'total_amount' => 500.00,
+            'subtotal' => 500.0,
+            'shipping_fee' => 0.0,
+            'total_amount' => 500.0,
             'status' => 'Cancelled',
         ]);
 
@@ -316,8 +324,8 @@ class OrderTest extends TestCase
             'city' => 'Delhi',
             'state' => 'Delhi',
             'pincode' => '110001',
-            'subtotal' => 1499.00,
-            'total_amount' => 1499.00,
+            'subtotal' => 1499.0,
+            'total_amount' => 1499.0,
             'payment_status' => 'Paid',
             'payment_method' => 'PhonePe',
             'status' => 'Processing',
@@ -334,8 +342,8 @@ class OrderTest extends TestCase
             'city' => 'Mumbai',
             'state' => 'Maharashtra',
             'pincode' => '400001',
-            'subtotal' => 899.00,
-            'total_amount' => 899.00,
+            'subtotal' => 899.0,
+            'total_amount' => 899.0,
             'payment_status' => 'Pending',
             'payment_method' => 'Cash on Delivery',
             'status' => 'Processing',
@@ -345,7 +353,8 @@ class OrderTest extends TestCase
 
         // 1. Filter by Payment Status = Paid
         $paidResponse = $this->actingAs($admin)->get(route('admin.orders', ['payment_status' => 'Paid']));
-        $paidResponse->assertStatus(200)
+        $paidResponse
+            ->assertStatus(200)
             ->assertSee('PV-2026-PAID1')
             ->assertDontSee('PV-2026-PEND1');
 
@@ -354,7 +363,8 @@ class OrderTest extends TestCase
             'date_from' => now()->subDays(7)->format('Y-m-d'),
             'date_to' => now()->format('Y-m-d'),
         ]));
-        $dateResponse->assertStatus(200)
+        $dateResponse
+            ->assertStatus(200)
             ->assertSee('PV-2026-PAID1')
             ->assertDontSee('PV-2026-PEND1');
     }

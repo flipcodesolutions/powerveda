@@ -1,8 +1,8 @@
 @extends('visitor.layouts.app')
 
-@section('title', 'Shopping Cart - Power Veda Premium Wellness')
-@section('meta_description', 'View your selected Power Veda Ayurvedic formulations, adjust quantities, and proceed to secure checkout for nationwide delivery.')
-@section('meta_keywords', 'Power Veda, shopping cart, Ayurvedic health supplements, checkout')
+@section('title', 'Shopping Cart - Yuvar Dhan Premium Wellness')
+@section('meta_description', 'View your selected Yuvar Dhan Ayurvedic formulations, adjust quantities, and proceed to secure checkout for nationwide delivery.')
+@section('meta_keywords', 'Yuvar Dhan, shopping cart, Ayurvedic health supplements, checkout')
 
 @section('content')
 <!-- 1. Breadcrumb Bar -->

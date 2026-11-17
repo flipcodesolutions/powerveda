@@ -15,8 +15,8 @@ class CartTest extends TestCase
     protected function createProduct(array $attributes = []): Product
     {
         return Product::create(array_merge([
-            'name' => 'Power Veda Formulation',
-            'price' => 1299.00,
+            'name' => 'Yuvar Dhan Formulation',
+            'price' => 1299.0,
             'stock' => 50,
             'detail' => 'Premium herbal wellness formulation.',
             'meta_title' => 'Herbal Product',
@@ -40,7 +40,7 @@ class CartTest extends TestCase
         $user = User::factory()->create();
         $product = $this->createProduct([
             'name' => 'Ashwagandha Gold',
-            'price' => 1499.00,
+            'price' => 1499.0,
         ]);
 
         $response = $this->actingAs($user)->postJson('/cart/add', [
@@ -48,7 +48,8 @@ class CartTest extends TestCase
             'qty' => 2,
         ]);
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJsonPath('success', true)
             ->assertJsonPath('total_items', 2)
             ->assertJsonPath('subtotal', 2998);
@@ -66,7 +67,7 @@ class CartTest extends TestCase
         $user = User::factory()->create();
         $product = $this->createProduct([
             'name' => 'Shilajit Resin',
-            'price' => 2199.00,
+            'price' => 2199.0,
         ]);
 
         // Add 1st time
@@ -92,7 +93,7 @@ class CartTest extends TestCase
     public function test_logged_in_user_can_update_cart_quantity(): void
     {
         $user = User::factory()->create();
-        $product = $this->createProduct(['price' => 1000.00]);
+        $product = $this->createProduct(['price' => 1000.0]);
 
         $cartItem = CartItem::create([
             'user_id' => $user->id,
@@ -107,7 +108,8 @@ class CartTest extends TestCase
             'qty' => 5,
         ]);
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJsonPath('success', true)
             ->assertJsonPath('total_items', 5)
             ->assertJsonPath('subtotal', 5000);
@@ -133,7 +135,8 @@ class CartTest extends TestCase
             'qty' => 0,
         ]);
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJsonPath('total_items', 0);
 
         $this->assertEquals(0, $user->cartItems()->count());
@@ -156,7 +159,8 @@ class CartTest extends TestCase
             'product_id' => $product->id,
         ]);
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJsonPath('success', true)
             ->assertJsonPath('total_items', 0);
 
@@ -174,7 +178,8 @@ class CartTest extends TestCase
 
         $response = $this->actingAs($user)->postJson('/cart/clear');
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJsonPath('success', true)
             ->assertJsonPath('total_items', 0)
             ->assertJsonPath('items', []);
@@ -188,21 +193,21 @@ class CartTest extends TestCase
             'email' => 'customer@powerveda.com',
             'password' => 'Secret1234',
         ]);
-        $product1 = $this->createProduct(['name' => 'Chyawanprash Special', 'price' => 799.00]);
-        $product2 = $this->createProduct(['name' => 'Brahmi Brain Tonic', 'price' => 649.00]);
+        $product1 = $this->createProduct(['name' => 'Chyawanprash Special', 'price' => 799.0]);
+        $product2 = $this->createProduct(['name' => 'Brahmi Brain Tonic', 'price' => 649.0]);
 
         $guestCart = [
             [
                 'id' => $product1->id,
                 'name' => $product1->name,
-                'price' => 799.00,
+                'price' => 799.0,
                 'image' => 'image/products/product-1.jpg',
                 'qty' => 2,
             ],
             [
                 'id' => $product2->id,
                 'name' => $product2->name,
-                'price' => 649.00,
+                'price' => 649.0,
                 'image' => 'image/products/product-2.jpg',
                 'qty' => 1,
             ]
@@ -214,7 +219,8 @@ class CartTest extends TestCase
             'guest_cart' => $guestCart,
         ]);
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJsonPath('success', true)
             ->assertJsonCount(2, 'cart');
 
@@ -233,13 +239,13 @@ class CartTest extends TestCase
 
     public function test_guest_cart_moves_to_database_upon_user_registration(): void
     {
-        $product = $this->createProduct(['name' => 'Saffron Glow Elixir', 'price' => 1899.00]);
+        $product = $this->createProduct(['name' => 'Saffron Glow Elixir', 'price' => 1899.0]);
 
         $guestCart = [
             [
                 'id' => $product->id,
                 'name' => $product->name,
-                'price' => 1899.00,
+                'price' => 1899.0,
                 'qty' => 3,
             ]
         ];
@@ -252,7 +258,8 @@ class CartTest extends TestCase
             'guest_cart' => $guestCart,
         ]);
 
-        $response->assertStatus(201)
+        $response
+            ->assertStatus(201)
             ->assertJsonPath('success', true)
             ->assertJsonCount(1, 'cart')
             ->assertJsonPath('cart.0.qty', 3);

@@ -45,7 +45,7 @@
           <!-- Product Name -->
           <div class="col-md-7">
             <label class="form-label fw-bold small" for="name">Product Name <span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $product->name) }}" placeholder="e.g. Power Veda Ashwagandha Gold KSM-66" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $product->name) }}" placeholder="e.g. Yuvar Dhan Ashwagandha Gold KSM-66" required>
             @error('name')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -263,7 +263,7 @@
           <!-- Meta Title -->
           <div class="col-12">
             <label class="form-label fw-bold small" for="meta_title">Meta Title</label>
-            <input type="text" class="form-control @error('meta_title') is-invalid @enderror" id="meta_title" name="meta_title" value="{{ old('meta_title', $product->meta_title) }}" placeholder="e.g. Buy Organic Ashwagandha Gold | Power Veda">
+            <input type="text" class="form-control @error('meta_title') is-invalid @enderror" id="meta_title" name="meta_title" value="{{ old('meta_title', $product->meta_title) }}" placeholder="e.g. Buy Organic Ashwagandha Gold | Yuvar Dhan">
             @error('meta_title')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror

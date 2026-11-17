@@ -17,10 +17,10 @@ use App\Http\Controllers\Visitor\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes - Power Veda
-|--------------------------------------------------------------------------
-*/
+ * |--------------------------------------------------------------------------
+ * | Web Routes - Yuvar Dhan
+ * |--------------------------------------------------------------------------
+ */
 
 // Visitor Frontend Routes
 Route::get('/', [PageController::class, 'home'])->name('home');

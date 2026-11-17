@@ -46,13 +46,14 @@ class AuthController extends Controller
                 return back()
                     ->withInput($request->only('email', 'remember'))
                     ->withErrors([
-                        'email' => 'Access Denied: You do not have administrative privileges to access the Power Veda Admin Console.',
+                        'email' => 'Access Denied: You do not have administrative privileges to access the Yuvar Dhan Admin Console.',
                     ]);
             }
 
             $request->session()->regenerate();
 
-            return redirect()->intended(route('admin.dashboard'))
+            return redirect()
+                ->intended(route('admin.dashboard'))
                 ->with('success', 'Welcome back, ' . $user->name . '!');
         }
 
@@ -73,7 +74,8 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login')
+        return redirect()
+            ->route('admin.login')
             ->with('success', 'You have been securely signed out of the Admin Console.');
     }
 }

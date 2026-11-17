@@ -28,11 +28,11 @@ class ReviewCrudTest extends TestCase
     public function test_can_list_reviews(): void
     {
         $review = Review::create([
-            'author'   => 'Dr. Anjali Sen',
+            'author' => 'Dr. Anjali Sen',
             'location' => 'Kolkata, West Bengal',
-            'rating'   => 5,
-            'comment'  => 'Remarkable purity and authentic formulation. Highly recommended.',
-            'status'   => 'Approved',
+            'rating' => 5,
+            'comment' => 'Remarkable purity and authentic formulation. Highly recommended.',
+            'status' => 'Approved',
         ]);
 
         $response = $this->get('/admin/reviews');
@@ -47,15 +47,15 @@ class ReviewCrudTest extends TestCase
     public function test_can_view_create_page(): void
     {
         $product = Product::create([
-            'name'  => 'Power Veda Shilajit Gold',
-            'price' => 2499.00,
+            'name' => 'Yuvar Dhan Shilajit Gold',
+            'price' => 2499.0,
             'stock' => 50,
         ]);
 
         $response = $this->get('/admin/reviews/create');
         $response->assertStatus(200);
         $response->assertSee('Add Customer Review');
-        $response->assertSee('Power Veda Shilajit Gold');
+        $response->assertSee('Yuvar Dhan Shilajit Gold');
     }
 
     /**
@@ -66,21 +66,21 @@ class ReviewCrudTest extends TestCase
         Storage::fake('public');
 
         $product = Product::create([
-            'name'  => 'Power Veda Ashwagandha KSM-66',
-            'price' => 1499.00,
+            'name' => 'Yuvar Dhan Ashwagandha KSM-66',
+            'price' => 1499.0,
             'stock' => 100,
         ]);
 
         $photoFile = UploadedFile::fake()->image('customer_avatar.jpg', 300, 300);
 
         $payload = [
-            'author'     => 'Kavita Iyer',
-            'location'   => 'Chennai, Tamil Nadu',
+            'author' => 'Kavita Iyer',
+            'location' => 'Chennai, Tamil Nadu',
             'product_id' => $product->id,
-            'rating'     => 5,
-            'comment'    => 'Great results within two weeks of regular consumption.',
-            'status'     => 'Approved',
-            'photo'      => $photoFile,
+            'rating' => 5,
+            'comment' => 'Great results within two weeks of regular consumption.',
+            'status' => 'Approved',
+            'photo' => $photoFile,
         ];
 
         $response = $this->post('/admin/reviews', $payload);
@@ -104,11 +104,11 @@ class ReviewCrudTest extends TestCase
     public function test_can_view_edit_page(): void
     {
         $review = Review::create([
-            'author'   => 'Rohan Varma',
+            'author' => 'Rohan Varma',
             'location' => 'Pune',
-            'rating'   => 4,
-            'comment'  => 'Good product packaging and timely dispatch.',
-            'status'   => 'Pending',
+            'rating' => 4,
+            'comment' => 'Good product packaging and timely dispatch.',
+            'status' => 'Pending',
         ]);
 
         $response = $this->get("/admin/reviews/{$review->id}/edit");
@@ -126,23 +126,23 @@ class ReviewCrudTest extends TestCase
 
         $initialPhoto = UploadedFile::fake()->image('old_avatar.jpg');
         $review = Review::create([
-            'author'   => 'Old Reviewer',
+            'author' => 'Old Reviewer',
             'location' => 'Delhi',
-            'rating'   => 3,
-            'comment'  => 'Old comment text',
-            'photo'    => $initialPhoto->store('reviews/photos', 'public'),
-            'status'   => 'Pending',
+            'rating' => 3,
+            'comment' => 'Old comment text',
+            'photo' => $initialPhoto->store('reviews/photos', 'public'),
+            'status' => 'Pending',
         ]);
 
         $newPhoto = UploadedFile::fake()->image('new_avatar.jpg');
 
         $response = $this->put("/admin/reviews/{$review->id}", [
-            'author'   => 'Updated Reviewer Name',
+            'author' => 'Updated Reviewer Name',
             'location' => 'New Delhi',
-            'rating'   => 5,
-            'comment'  => 'Updated energetic feedback after longer usage.',
-            'status'   => 'Approved',
-            'photo'    => $newPhoto,
+            'rating' => 5,
+            'comment' => 'Updated energetic feedback after longer usage.',
+            'status' => 'Approved',
+            'photo' => $newPhoto,
         ]);
 
         $response->assertRedirect(route('admin.reviews.index'));
@@ -167,11 +167,11 @@ class ReviewCrudTest extends TestCase
         $photoPath = $photo->store('reviews/photos', 'public');
 
         $review = Review::create([
-            'author'  => 'Reviewer to Delete',
-            'rating'  => 2,
+            'author' => 'Reviewer to Delete',
+            'rating' => 2,
             'comment' => 'Comment to be removed',
-            'photo'   => $photoPath,
-            'status'  => 'Hidden',
+            'photo' => $photoPath,
+            'status' => 'Hidden',
         ]);
 
         $response = $this->delete("/admin/reviews/{$review->id}");
@@ -188,10 +188,10 @@ class ReviewCrudTest extends TestCase
     public function test_review_validation(): void
     {
         $response = $this->post('/admin/reviews', [
-            'author'  => '', // Required
-            'rating'  => 10, // Must be 1 to 5
-            'comment' => '', // Required
-            'status'  => 'InvalidStatus', // Must be in Approved, Pending, Hidden
+            'author' => '',  // Required
+            'rating' => 10,  // Must be 1 to 5
+            'comment' => '',  // Required
+            'status' => 'InvalidStatus',  // Must be in Approved, Pending, Hidden
         ]);
 
         $response->assertSessionHasErrors(['author', 'rating', 'comment', 'status']);

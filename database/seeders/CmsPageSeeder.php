@@ -7,16 +7,16 @@ use Illuminate\Database\Seeder;
 
 class CmsPageSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        $pages = [
-            [
-                'title' => 'Privacy Policy',
-                'slug' => 'privacy-policy',
-                'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
+  /**
+   * Run the database seeds.
+   */
+  public function run(): void
+  {
+    $pages = [
+      [
+        'title' => 'Privacy Policy',
+        'slug' => 'privacy-policy',
+        'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
   <div>
     <span class="badge bg-light text-dark border"><i class="bi bi-calendar3 me-1"></i> Last Updated: August 2026</span>
   </div>
@@ -26,7 +26,7 @@ class CmsPageSeeder extends Seeder
 </div>
 
 <p class="policy-text">
-  At <strong>Power Veda</strong> (an associated men’s wellness brand of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, serving patients since 2006), we are committed to safeguarding the personal information and confidentiality of our valued customers. This Privacy Policy details how we collect, utilize, store, and protect your information when you visit our website or make a purchase.
+  At <strong>Yuvar Dhan</strong> (an associated men’s wellness brand of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, serving patients since 2006), we are committed to safeguarding the personal information and confidentiality of our valued customers. This Privacy Policy details how we collect, utilize, store, and protect your information when you visit our website or make a purchase.
 </p>
 
 <h2 class="policy-section-title">
@@ -54,7 +54,7 @@ class CmsPageSeeder extends Seeder
   <i class="bi bi-shield-shaded"></i> 3. Data Protection &amp; Payment Security
 </h2>
 <div class="policy-highlight-box mb-4">
-  <strong style="color: var(--heading-color);">Bank-Grade Security:</strong> All financial transactions on Power Veda are secured by 256-Bit SSL encryption. We <strong>never</strong> store your Credit/Debit Card numbers or CVV details on our servers. All payments are processed through RBI-compliant, PCI-DSS certified payment gateways.
+  <strong style="color: var(--heading-color);">Bank-Grade Security:</strong> All financial transactions on Yuvar Dhan are secured by 256-Bit SSL encryption. We <strong>never</strong> store your Credit/Debit Card numbers or CVV details on our servers. All payments are processed through RBI-compliant, PCI-DSS certified payment gateways.
 </div>
 
 <h2 class="policy-section-title">
@@ -68,7 +68,7 @@ class CmsPageSeeder extends Seeder
   <i class="bi bi-share-fill"></i> 5. Zero Third-Party Data Selling
 </h2>
 <p class="policy-text">
-  We uphold a strict zero-spam, zero-selling policy. Power Veda does <strong>not sell, rent, or lease</strong> your personal details to third-party marketing firms under any circumstances.
+  We uphold a strict zero-spam, zero-selling policy. Yuvar Dhan does <strong>not sell, rent, or lease</strong> your personal details to third-party marketing firms under any circumstances.
 </p>
 
 <h2 class="policy-section-title">
@@ -78,15 +78,15 @@ class CmsPageSeeder extends Seeder
   If you have any questions regarding your data privacy, or wish to request data removal or profile updates:
 </p>
 <div class="p-3 rounded bg-light border">
-  <p class="mb-1"><strong>Data Privacy Officer:</strong> Power Veda Information Security Cell</p>
+  <p class="mb-1"><strong>Data Privacy Officer:</strong> Yuvar Dhan Information Security Cell</p>
   <p class="mb-1"><strong>Email:</strong> privacy@powerveda.com</p>
   <p class="mb-0"><strong>Helpline:</strong> +91 (800) 555-VEDA</p>
 </div>',
-            ],
-            [
-                'title' => 'Refund Policy',
-                'slug' => 'refund-policy',
-                'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
+      ],
+      [
+        'title' => 'Refund Policy',
+        'slug' => 'refund-policy',
+        'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
   <div>
     <span class="badge bg-light text-dark border"><i class="bi bi-calendar3 me-1"></i> Last Updated: August 2026</span>
   </div>
@@ -96,7 +96,7 @@ class CmsPageSeeder extends Seeder
 </div>
 
 <div class="policy-highlight-box mb-4">
-  <h5 class="fw-bold mb-1" style="color: var(--heading-color);">🌱 The Power Veda Pure Wellness Guarantee</h5>
+  <h5 class="fw-bold mb-1" style="color: var(--heading-color);">🌱 The Yuvar Dhan Pure Wellness Guarantee</h5>
   <p class="mb-0 small text-muted">
     We stand firmly behind the bio-potency and purity of our handcrafted formulations. If you are not satisfied with your experience, our support team will ensure a smooth refund or replacement process.
   </p>
@@ -170,11 +170,11 @@ class CmsPageSeeder extends Seeder
     <i class="bi bi-envelope-fill me-1"></i> Email Support Team
   </a>
 </div>',
-            ],
-            [
-                'title' => 'Return Policy',
-                'slug' => 'return-policy',
-                'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
+      ],
+      [
+        'title' => 'Return Policy',
+        'slug' => 'return-policy',
+        'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
   <div>
     <span class="badge bg-light text-dark border"><i class="bi bi-calendar3 me-1"></i> Last Updated: August 2026</span>
   </div>
@@ -184,14 +184,14 @@ class CmsPageSeeder extends Seeder
 </div>
 
 <p class="policy-text">
-  At <strong>Power Veda</strong> (associated with <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>), your confidence in our authentic Ayurvedic remedies is paramount. We offer a transparent, customer-first return and exchange process.
+  At <strong>Yuvar Dhan</strong> (associated with <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>), your confidence in our authentic Ayurvedic remedies is paramount. We offer a transparent, customer-first return and exchange process.
 </p>
 
 <h2 class="policy-section-title">
   <i class="bi bi-clock-history"></i> 1. 30-Day Return Window
 </h2>
 <p class="policy-text">
-  You have <strong>30 calendar days</strong> from the date of delivery to request a return or replacement for any botanical product purchased directly through the official Power Veda storefront.
+  You have <strong>30 calendar days</strong> from the date of delivery to request a return or replacement for any botanical product purchased directly through the official Yuvar Dhan storefront.
 </p>
 
 <h2 class="policy-section-title">
@@ -227,15 +227,15 @@ class CmsPageSeeder extends Seeder
 </ul>
 
 <div class="p-3 rounded bg-light border mt-4">
-  <p class="mb-1"><strong>Returns Department:</strong> Power Veda Logistics Center</p>
+  <p class="mb-1"><strong>Returns Department:</strong> Yuvar Dhan Logistics Center</p>
   <p class="mb-1"><strong>Email:</strong> returns@powerveda.com / support@powerveda.com</p>
   <p class="mb-0"><strong>Helpline:</strong> +91 (800) 555-VEDA (Mon - Sat, 9:00 AM - 7:00 PM IST)</p>
 </div>',
-            ],
-            [
-                'title' => 'Shipping Policy',
-                'slug' => 'shipping-policy',
-                'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
+      ],
+      [
+        'title' => 'Shipping Policy',
+        'slug' => 'shipping-policy',
+        'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
   <div>
     <span class="badge bg-light text-dark border"><i class="bi bi-calendar3 me-1"></i> Last Updated: August 2026</span>
   </div>
@@ -278,7 +278,7 @@ class CmsPageSeeder extends Seeder
   <i class="bi bi-box2"></i> 4. Discreet &amp; Eco-Friendly Packaging
 </h2>
 <p class="policy-text">
-  We respect your personal privacy. All Power Veda formulations are packed in <strong>plain, discreet, tamper-proof boxes</strong> without any sensitive product descriptions printed on the outer label.
+  We respect your personal privacy. All Yuvar Dhan formulations are packed in <strong>plain, discreet, tamper-proof boxes</strong> without any sensitive product descriptions printed on the outer label.
 </p>
 
 <h2 class="policy-section-title">
@@ -292,11 +292,11 @@ class CmsPageSeeder extends Seeder
   <p class="mb-1"><strong>Logistics Helpdesk:</strong> shipping@powerveda.com</p>
   <p class="mb-0"><strong>Helpline:</strong> +91 (800) 555-VEDA (Mon - Sat: 9:00 AM - 7:00 PM IST)</p>
 </div>',
-            ],
-            [
-                'title' => 'Terms and Conditions',
-                'slug' => 'terms-and-conditions',
-                'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
+      ],
+      [
+        'title' => 'Terms and Conditions',
+        'slug' => 'terms-and-conditions',
+        'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
   <div>
     <span class="badge bg-light text-dark border"><i class="bi bi-calendar3 me-1"></i> Last Updated: August 2026</span>
   </div>
@@ -306,21 +306,21 @@ class CmsPageSeeder extends Seeder
 </div>
 
 <p class="policy-text">
-  Welcome to <strong>Power Veda</strong>. Power Veda is an associated men’s wellness brand of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since 2006. By accessing our website, browsing our catalog, or purchasing our premium botanical products, you agree to comply with and be bound by the following terms and conditions.
+  Welcome to <strong>Yuvar Dhan</strong>. Yuvar Dhan is an associated men’s wellness brand of <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since 2006. By accessing our website, browsing our catalog, or purchasing our premium botanical products, you agree to comply with and be bound by the following terms and conditions.
 </p>
 
 <h2 class="policy-section-title">
   <i class="bi bi-1-circle-fill"></i> 1. Acceptance of Terms &amp; Business Association
 </h2>
 <p class="policy-text">
-  These Terms &amp; Conditions govern your use of the Power Veda web platform and all associated services. Power Veda operates with the support and experience of M.C.D.C.R. Vaidraj Disease Eradication Center in areas including Ayurvedic wellness knowledge, product development, healthcare guidance, quality-focused processes, customer support, and business operations.
+  These Terms &amp; Conditions govern your use of the Yuvar Dhan web platform and all associated services. Yuvar Dhan operates with the support and experience of M.C.D.C.R. Vaidraj Disease Eradication Center in areas including Ayurvedic wellness knowledge, product development, healthcare guidance, quality-focused processes, customer support, and business operations.
 </p>
 
 <h2 class="policy-section-title">
   <i class="bi bi-2-circle-fill"></i> 2. Botanical Wellness &amp; Health Disclaimer
 </h2>
 <p class="policy-text">
-  All Power Veda formulations are crafted with pure natural botanicals and manufactured under strict AYUSH guidelines with healthcare heritage backed by M.C.D.C.R. Vaidraj Disease Eradication Center.
+  All Yuvar Dhan formulations are crafted with pure natural botanicals and manufactured under strict AYUSH guidelines with healthcare heritage backed by M.C.D.C.R. Vaidraj Disease Eradication Center.
 </p>
 <div class="policy-highlight-box mb-4">
   <strong style="color: var(--heading-color);">Important Medical Disclaimer:</strong> The statements and products on this website have not been evaluated as medical pharmaceuticals to diagnose, treat, cure, or prevent any clinical disease. Consult your qualified physician before beginning any new botanical wellness regimen if you are pregnant, nursing, or undergoing clinical treatment.
@@ -331,7 +331,7 @@ class CmsPageSeeder extends Seeder
 </h2>
 <ul class="policy-list">
   <li><strong>Pricing:</strong> All prices listed are in Indian Rupees (₹ INR) and include applicable GST taxes.</li>
-  <li><strong>Payment &amp; Operational Processing:</strong> Power Veda is an associated men’s wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center. Certain operational services of Power Veda, including banking, payment processing, billing, invoices, customer support, logistics or other commercial activities, may be managed through <strong>M.C.D.C.R. Vaidraj Disease Eradication Center and its authorized business accounts</strong>, wherever applicable.</li>
+  <li><strong>Payment &amp; Operational Processing:</strong> Yuvar Dhan is an associated men’s wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center. Certain operational services of Yuvar Dhan, including banking, payment processing, billing, invoices, customer support, logistics or other commercial activities, may be managed through <strong>M.C.D.C.R. Vaidraj Disease Eradication Center and its authorized business accounts</strong>, wherever applicable.</li>
   <li><strong>Payment Security:</strong> Transactions are securely processed through encrypted 256-Bit SSL gateways supporting UPI, Net Banking, Credit/Debit Cards, and Cash on Delivery (COD where eligible).</li>
   <li><strong>Order Confirmation:</strong> An automated SMS and email notification will be dispatched upon successful order verification.</li>
 </ul>
@@ -340,14 +340,14 @@ class CmsPageSeeder extends Seeder
   <i class="bi bi-4-circle-fill"></i> 4. Intellectual Property Rights
 </h2>
 <p class="policy-text">
-  The Power Veda name, emblem, logo, bespoke packaging aesthetics, custom imagery, formulations, and website architecture are the exclusive intellectual property of Power Veda Wellness Pvt Ltd. Unauthorized reproduction, scraping, or commercial exploitation is strictly prohibited under international copyright laws.
+  The Yuvar Dhan name, emblem, logo, bespoke packaging aesthetics, custom imagery, formulations, and website architecture are the exclusive intellectual property of Yuvar Dhan Wellness Pvt Ltd. Unauthorized reproduction, scraping, or commercial exploitation is strictly prohibited under international copyright laws.
 </p>
 
 <h2 class="policy-section-title">
   <i class="bi bi-5-circle-fill"></i> 5. Limitation of Liability
 </h2>
 <p class="policy-text">
-  Power Veda shall not be liable for any indirect, incidental, or consequential damages resulting from the use or inability to use our products, beyond the actual invoice purchase value paid by the customer for the specific product.
+  Yuvar Dhan shall not be liable for any indirect, incidental, or consequential damages resulting from the use or inability to use our products, beyond the actual invoice purchase value paid by the customer for the specific product.
 </p>
 
 <h2 class="policy-section-title">
@@ -357,22 +357,22 @@ class CmsPageSeeder extends Seeder
   For legal inquiries, operational queries, or customer grievances regarding these terms:
 </p>
 <div class="p-3 rounded bg-light border">
-  <p class="mb-1"><strong>Grievance Officer:</strong> Power Veda Legal &amp; Compliance Cell</p>
+  <p class="mb-1"><strong>Grievance Officer:</strong> Yuvar Dhan Legal &amp; Compliance Cell</p>
   <p class="mb-1"><strong>Email:</strong> legal@powerveda.com / support@powerveda.com</p>
   <p class="mb-1"><strong>Helpline:</strong> +91 (800) 555-VEDA (Mon - Sat, 9:00 AM - 7:00 PM IST)</p>
   <p class="mb-0"><strong>Address:</strong> 108 Lotus Wellness Way, Green Valley, Mumbai 400001, Maharashtra, India</p>
 </div>',
-            ],
-        ];
+      ],
+    ];
 
-        foreach ($pages as $page) {
-            CmsPage::updateOrCreate(
-                ['slug' => $page['slug']],
-                [
-                    'title' => $page['title'],
-                    'detail' => $page['detail'],
-                ]
-            );
-        }
+    foreach ($pages as $page) {
+      CmsPage::updateOrCreate(
+        ['slug' => $page['slug']],
+        [
+          'title' => $page['title'],
+          'detail' => $page['detail'],
+        ]
+      );
     }
+  }
 }

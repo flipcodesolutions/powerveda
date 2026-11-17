@@ -112,7 +112,7 @@ class PhonePeService
         $payload = [
             'merchantOrderId' => $order->order_number,
             'amount' => $amountInPaise,
-            'expireAfter' => 1200, // 20 minutes expiration
+            'expireAfter' => 1200,  // 20 minutes expiration
             'meta' => [
                 'udf1' => (string) $order->user_id,
                 'udf2' => (string) $order->contactNo,
@@ -120,7 +120,7 @@ class PhonePeService
             ],
             'paymentFlow' => [
                 'type' => 'PG_CHECKOUT',
-                'message' => 'Payment for Power Veda Order #' . $order->order_number,
+                'message' => 'Payment for Yuvar Dhan Order #' . $order->order_number,
                 'merchantUrls' => [
                     'redirectUrl' => $redirectUrl,
                 ],
@@ -245,9 +245,9 @@ class PhonePeService
         Log::info('PhonePe Webhook Received', $payload);
 
         // Extract merchant order ID from webhook payload
-        $merchantOrderId = $payload['merchantOrderId'] 
-            ?? $payload['data']['merchantOrderId'] 
-            ?? $payload['data']['merchantTransactionId'] 
+        $merchantOrderId = $payload['merchantOrderId']
+            ?? $payload['data']['merchantOrderId']
+            ?? $payload['data']['merchantTransactionId']
             ?? null;
 
         if (!$merchantOrderId) {
