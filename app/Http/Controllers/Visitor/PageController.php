@@ -75,7 +75,7 @@ class PageController extends Controller
      */
     public function privacy(): View
     {
-        $page = CmsPage::where('slug', 'privacy-policy')->firstOrFail();
+        $page = CmsPage::where('slug', 'privacy-policy')->active()->firstOrFail();
         return view('visitor.pages.policy', compact('page'));
     }
 
@@ -84,7 +84,9 @@ class PageController extends Controller
      */
     public function terms(): View
     {
-        $page = CmsPage::where('slug', 'terms-and-conditions')->firstOrFail();
+        $page = CmsPage::where(function ($q) {
+            $q->where('slug', 'terms-conditions')->orWhere('slug', 'terms-and-conditions');
+        })->active()->firstOrFail();
         return view('visitor.pages.policy', compact('page'));
     }
 
@@ -93,7 +95,7 @@ class PageController extends Controller
      */
     public function refund(): View
     {
-        $page = CmsPage::where('slug', 'refund-policy')->firstOrFail();
+        $page = CmsPage::where('slug', 'refund-policy')->active()->firstOrFail();
         return view('visitor.pages.policy', compact('page'));
     }
 
@@ -102,7 +104,7 @@ class PageController extends Controller
      */
     public function return(): View
     {
-        $page = CmsPage::where('slug', 'return-policy')->firstOrFail();
+        $page = CmsPage::where('slug', 'return-policy')->active()->firstOrFail();
         return view('visitor.pages.policy', compact('page'));
     }
 
@@ -111,7 +113,7 @@ class PageController extends Controller
      */
     public function shipping(): View
     {
-        $page = CmsPage::where('slug', 'shipping-policy')->firstOrFail();
+        $page = CmsPage::where('slug', 'shipping-policy')->active()->firstOrFail();
         return view('visitor.pages.policy', compact('page'));
     }
 
@@ -120,7 +122,7 @@ class PageController extends Controller
      */
     public function showPolicy(string $slug): View
     {
-        $page = CmsPage::where('slug', $slug)->firstOrFail();
+        $page = CmsPage::where('slug', $slug)->active()->firstOrFail();
         return view('visitor.pages.policy', compact('page'));
     }
 

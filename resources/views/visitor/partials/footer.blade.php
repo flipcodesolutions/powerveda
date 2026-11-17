@@ -19,7 +19,7 @@
           </div>
         </div>
         <p class="footer-brand-text">
-          Yuvar Dhan is a specialized men’s wellness brand associated with <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong> (serving since 2006), delivering authentic Ayurvedic formulations engineered for vitality, stamina, and balance.
+          Yuvar Dhan is a specialized men’s wellness brand associated with <strong>M.C.D.C.R. Vaidraj Disease Eradication Center</strong> (serving patients since 2022), delivering quality wellness formulations engineered for vitality, stamina, and balance.
         </p>
         <div class="footer-social-group">
           <a href="https://facebook.com" class="social-icon-btn" target="_blank" rel="noopener noreferrer"
@@ -88,7 +88,7 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom-bar d-flex flex-wrap justify-content-between align-items-center gap-3">
       <div>
-        &copy; {{ date('Y') }} Yuvar Dhan &bull; Associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center (Est. 2006). All rights reserved. &bull; 
+        &copy; {{ date('Y') }} Yuvar Dhan &bull; Associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center (Est. 2022). All rights reserved. &bull; 
         <a href="{{ route('admin.dashboard') }}" class="text-decoration-none text-warning fw-bold mx-1"><i class="bi bi-shield-lock"></i> Admin Portal</a>
       </div>
       <div class="d-flex gap-3 fs-5" style="color: var(--silver-color);">

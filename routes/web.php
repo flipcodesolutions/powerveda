@@ -29,10 +29,12 @@ Route::get('/product/{product}', [PageController::class, 'productDetail'])->name
 Route::get('/account', [PageController::class, 'account'])->name('account');
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
+Route::get('/terms-conditions', [PageController::class, 'terms'])->name('terms.conditions');
 Route::get('/refund-policy', [PageController::class, 'refund'])->name('refund');
 Route::get('/return-policy', [PageController::class, 'return'])->name('return');
 Route::get('/shipping-policy', [PageController::class, 'shipping'])->name('shipping');
 Route::get('/policies/{slug}', [PageController::class, 'showPolicy'])->name('policies.show');
+Route::get('/cms/{slug}', [PageController::class, 'showPolicy'])->name('cms.show');
 
 // Visitor Contact Form Submission
 Route::post('/contact', [VisitorContactController::class, 'submit'])->name('contact.submit');
@@ -109,7 +111,10 @@ Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function ()
     Route::patch('/contacts/{contact}/status', [AdminContactController::class, 'updateStatus'])->name('contacts.status');
     Route::delete('/contacts/{contact}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
 
-    // Policy CMS Management (Single createOrUpdate)
+    // Policy CMS Management (Single createOrUpdate, Listing, Edit, Status Toggle)
     Route::get('/cms', [CmsPageController::class, 'index'])->name('cms.index');
+    Route::get('/cms/create', [CmsPageController::class, 'create'])->name('cms.create');
+    Route::get('/cms/{id}/edit', [CmsPageController::class, 'edit'])->name('cms.edit');
     Route::post('/cms', [CmsPageController::class, 'createOrUpdate'])->name('cms.createOrUpdate');
+    Route::patch('/cms/{id}/toggle-status', [CmsPageController::class, 'toggleStatus'])->name('cms.toggleStatus');
 });

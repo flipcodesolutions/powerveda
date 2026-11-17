@@ -355,8 +355,8 @@
         <div class="about-visual-wrap">
           <img src="{{ asset('image/about.jpg') }}" alt="Yuvar Dhan Botanical Preparation & Clinical Heritage" class="about-img" loading="lazy">
           <div class="about-heritage-badge">
-            <div class="about-badge-number">2006</div>
-            <div class="about-badge-label">Ayurvedic Heritage</div>
+            <div class="about-badge-number">2022</div>
+            <div class="about-badge-label">Serving Patients</div>
           </div>
         </div>
       </div>
@@ -368,7 +368,7 @@
           <strong>Yuvar Dhan</strong> is a specialized men’s wellness brand committed to supporting modern men with thoughtfully developed Ayurvedic wellness solutions inspired by traditional Indian knowledge and contemporary lifestyle needs.
         </p>
         <p class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.65;">
-          Yuvar Dhan is an <strong>associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since <strong>2006</strong>. This association brings decades of patient care, wellness consultation, and clinical formulation expertise directly to men's health.
+          Yuvar Dhan is an <strong>associated wellness brand of M.C.D.C.R. Vaidraj Disease Eradication Center</strong>, an established Ayurvedic healthcare organization serving patients since <strong>2022</strong>. This association brings patient care, wellness consultation, and formulation experience directly to men's health.
         </p>
 
         <div class="row g-2 mb-4">

@@ -16,7 +16,7 @@
       {{ $page->title }}
     </h1>
     <p class="mb-0" style="color: var(--silver-color); max-width: 650px;">
-      Official guidelines and policies of Yuvar Dhan, associated with M.C.D.C.R. Vaidraj Disease Eradication Center (serving since 2006).
+      Official guidelines and policies of Yuvar Dhan, associated with M.C.D.C.R. Vaidraj Disease Eradication Center (serving patients since 2022).
     </p>
   </div>
 </section>
@@ -28,7 +28,7 @@
       <div class="col-lg-10">
         
         <div class="policy-card">
-          {!! $page->detail !!}
+          {!! $page->content ?: $page->detail !!}
         </div>
 
       </div>

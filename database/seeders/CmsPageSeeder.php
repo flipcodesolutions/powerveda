@@ -294,8 +294,8 @@ class CmsPageSeeder extends Seeder
 </div>',
       ],
       [
-        'title' => 'Terms and Conditions',
-        'slug' => 'terms-and-conditions',
+        'title' => 'Terms & Conditions',
+        'slug' => 'terms-conditions',
         'detail' => '<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 pb-3 border-bottom">
   <div>
     <span class="badge bg-light text-dark border"><i class="bi bi-calendar3 me-1"></i> Last Updated: August 2026</span>
@@ -366,11 +366,13 @@ class CmsPageSeeder extends Seeder
     ];
 
     foreach ($pages as $page) {
-      CmsPage::updateOrCreate(
+      CmsPage::firstOrCreate(
         ['slug' => $page['slug']],
         [
           'title' => $page['title'],
+          'content' => $page['detail'],
           'detail' => $page['detail'],
+          'status' => true,
         ]
       );
     }
